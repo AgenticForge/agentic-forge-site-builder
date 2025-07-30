@@ -1,25 +1,27 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Bot, Workflow, Lightbulb, ArrowRight } from "lucide-react";
+import { Brain, Network, Sparkles, ArrowRight } from "lucide-react";
 import aiWorkflowIllustration from "@/assets/ai-workflow-illustration.jpg";
+import programmingMonitor from "@/assets/programming-monitor.jpg";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const services = [
   {
-    icon: Bot,
+    icon: Brain,
     title: "AI Agent Development",
     description: "Build sophisticated AI agents with LangGraph that handle complex business processes, make intelligent decisions, and adapt to your workflows.",
     features: ["Multi-step reasoning", "Context awareness", "Custom business logic", "Enterprise scalability"],
     highlight: "Most Popular"
   },
   {
-    icon: Workflow,
-    title: "Workflow Automation",
+    icon: Network,
+    title: "Workflow Automation", 
     description: "Deploy n8n-powered automations with 422+ integrations, connecting your entire tech stack for seamless end-to-end process automation.",
     features: ["422+ integrations", "Real-time sync", "Error handling", "Visual workflow builder"],
     highlight: null
   },
   {
-    icon: Lightbulb,
+    icon: Sparkles,
     title: "Custom AI Solutions",
     description: "Enterprise-grade AI solutions tailored to your industry requirements, from data processing to intelligent customer interactions.",
     features: ["Custom algorithms", "Industry-specific", "Scalable architecture", "24/7 monitoring"],
@@ -28,12 +30,13 @@ const services = [
 ];
 
 const Services = () => {
+  useScrollAnimation();
   return (
     <section id="services" className="py-24 bg-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-20">
+        <div className="text-center mb-20" data-animate>
           <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-            <Workflow className="w-4 h-4 mr-2" />
+            <Network className="w-4 h-4 mr-2" />
             Enterprise AI Solutions
           </div>
           <h2 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
@@ -45,7 +48,7 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16" data-animate>
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
@@ -98,7 +101,7 @@ const Services = () => {
         </div>
 
         {/* Illustration Section */}
-        <div className="relative mt-20 p-8 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl overflow-hidden">
+        <div className="relative mt-20 p-8 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl overflow-hidden" data-animate>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-3xl font-bold mb-6 text-gradient-primary">
@@ -125,8 +128,8 @@ const Services = () => {
             </div>
             <div className="relative">
               <img 
-                src={aiWorkflowIllustration} 
-                alt="AI Workflow Automation" 
+                src={programmingMonitor} 
+                alt="Programming and Development" 
                 className="w-full h-auto rounded-xl shadow-2xl"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent rounded-xl"></div>

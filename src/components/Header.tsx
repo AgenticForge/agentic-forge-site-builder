@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Cog, Menu, ArrowRight, Sparkles } from "lucide-react";
+import { useNavbarHighlight } from "@/hooks/useNavbarHighlight";
 
 const Header = () => {
+  const activeSection = useNavbarHighlight();
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-xl border-b border-border/50">
       <div className="container mx-auto px-6 py-5">
@@ -23,25 +25,60 @@ const Header = () => {
 
           {/* Enhanced Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            <a href="#services" className="relative text-muted-foreground hover:text-primary transition-colors font-medium group">
+            <a 
+              href="#services" 
+              className={`relative transition-colors font-medium group ${
+                activeSection === 'services' ? 'text-primary' : 'text-muted-foreground hover:text-primary'
+              }`}
+            >
               Services
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300"></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-primary transition-all duration-300 ${
+                activeSection === 'services' ? 'w-full' : 'w-0 group-hover:w-full'
+              }`}></span>
             </a>
-            <a href="#why-choose" className="relative text-muted-foreground hover:text-primary transition-colors font-medium group">
+            <a 
+              href="#why-choose" 
+              className={`relative transition-colors font-medium group ${
+                activeSection === 'why-choose' ? 'text-primary' : 'text-muted-foreground hover:text-primary'
+              }`}
+            >
               Solutions
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300"></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-primary transition-all duration-300 ${
+                activeSection === 'why-choose' ? 'w-full' : 'w-0 group-hover:w-full'
+              }`}></span>
             </a>
-            <a href="#case-studies" className="relative text-muted-foreground hover:text-primary transition-colors font-medium group">
+            <a 
+              href="#case-studies" 
+              className={`relative transition-colors font-medium group ${
+                activeSection === 'case-studies' ? 'text-primary' : 'text-muted-foreground hover:text-primary'
+              }`}
+            >
               Case Studies
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300"></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-primary transition-all duration-300 ${
+                activeSection === 'case-studies' ? 'w-full' : 'w-0 group-hover:w-full'
+              }`}></span>
             </a>
-            <a href="#about" className="relative text-muted-foreground hover:text-primary transition-colors font-medium group">
+            <a 
+              href="#about" 
+              className={`relative transition-colors font-medium group ${
+                activeSection === 'about' ? 'text-primary' : 'text-muted-foreground hover:text-primary'
+              }`}
+            >
               About
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300"></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-primary transition-all duration-300 ${
+                activeSection === 'about' ? 'w-full' : 'w-0 group-hover:w-full'
+              }`}></span>
             </a>
-            <a href="#contact" className="relative text-muted-foreground hover:text-primary transition-colors font-medium group">
+            <a 
+              href="#contact" 
+              className={`relative transition-colors font-medium group ${
+                activeSection === 'contact' ? 'text-primary' : 'text-muted-foreground hover:text-primary'
+              }`}
+            >
               Contact
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300"></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-primary transition-all duration-300 ${
+                activeSection === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'
+              }`}></span>
             </a>
           </div>
 

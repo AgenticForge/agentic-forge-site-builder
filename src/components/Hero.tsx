@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, Brain, Zap, Target } from "lucide-react";
 import heroImage from "@/assets/hero-automation.jpg";
+import circuitBoard from "@/assets/circuit-board.jpg";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Hero = () => {
+  useScrollAnimation();
   return (
     <section className="relative min-h-screen flex items-center justify-center gradient-hero circuit-pattern overflow-hidden">
       {/* Background Image */}

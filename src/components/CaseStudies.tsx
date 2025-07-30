@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, Clock, FileText } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const cases = [
   {
@@ -60,10 +61,11 @@ const cases = [
 ];
 
 const CaseStudies = () => {
+  useScrollAnimation();
   return (
     <section id="case-studies" className="py-24 bg-gradient-to-br from-muted/30 to-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-20">
+        <div className="text-center mb-20" data-animate>
           <div className="inline-flex items-center px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium mb-6">
             <TrendingUp className="w-4 h-4 mr-2" />
             Success Stories
@@ -77,7 +79,7 @@ const CaseStudies = () => {
           </p>
         </div>
 
-        <div className="space-y-16">
+        <div className="space-y-16" data-animate>
           {cases.map((caseStudy, index) => {
             const IconComponent = caseStudy.icon;
             return (
@@ -142,18 +144,16 @@ const CaseStudies = () => {
                 <div className={index % 2 === 1 ? "lg:order-1" : ""}>
                   <div className="relative group">
                     <div className="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl overflow-hidden shadow-2xl">
-                      {/* Placeholder for demo video */}
-                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-muted/50 to-background border border-border/50 rounded-2xl">
-                        <div className="text-center p-8">
-                          <div className="w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                            <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M8 5v14l11-7z"/>
-                            </svg>
-                          </div>
-                          <h4 className="text-lg font-semibold text-foreground mb-2">Watch Demo</h4>
-                          <p className="text-sm text-muted-foreground">See the solution in action</p>
-                        </div>
-                      </div>
+                      {/* Actual playable video */}
+                      <video 
+                        className="w-full h-full object-cover"
+                        controls
+                        poster="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop"
+                      >
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
                     </div>
                     
