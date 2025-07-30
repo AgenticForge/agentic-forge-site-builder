@@ -61,86 +61,114 @@ const cases = [
 
 const CaseStudies = () => {
   return (
-    <section id="case-studies" className="py-24 bg-background">
+    <section id="case-studies" className="py-24 bg-gradient-to-br from-muted/30 to-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Real Results from <span className="text-gradient-primary">Real Businesses</span>
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium mb-6">
+            <TrendingUp className="w-4 h-4 mr-2" />
+            Success Stories
+          </div>
+          <h2 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
+            Proven Results for <br />
+            <span className="text-gradient-primary">Enterprise Clients</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            See how we've transformed operations for businesses across industries with our AI automation solutions.
+          <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+            Discover how industry leaders have transformed their operations with our AI automation solutions, delivering measurable ROI and operational excellence.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="space-y-16">
           {cases.map((caseStudy, index) => {
             const IconComponent = caseStudy.icon;
             return (
-              <Card 
-                key={index} 
-                className="relative group card-hover border-border/50 hover:border-primary/30 overflow-hidden"
-              >
-                {/* Header with icon and industry */}
-                <CardHeader className="pb-4">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="gradient-tech p-3 rounded-lg group-hover:glow-secondary transition-all duration-300">
-                      <IconComponent className="w-6 h-6 text-white" />
+              <div key={index} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                {/* Content Side */}
+                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                  <Card className="border-0 shadow-none bg-transparent">
+                    <CardHeader className="px-0 pb-6">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="gradient-tech p-4 rounded-xl">
+                          <IconComponent className="w-8 h-8 text-white" />
+                        </div>
+                        <Badge variant="secondary" className="text-sm px-4 py-1.5">
+                          {caseStudy.industry}
+                        </Badge>
+                      </div>
+                      <CardTitle className="text-3xl font-bold text-foreground leading-tight mb-4">
+                        {caseStudy.title}
+                      </CardTitle>
+                      <CardDescription className="text-lg text-muted-foreground leading-relaxed">
+                        {caseStudy.challenge}
+                      </CardDescription>
+                    </CardHeader>
+
+                    <CardContent className="px-0">
+                      {/* Key Metrics */}
+                      <div className="grid grid-cols-2 gap-6 mb-8 p-6 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-xl">
+                        <div className="text-center">
+                          <div className="text-4xl font-bold text-gradient-accent mb-2">{caseStudy.metrics.primary}</div>
+                          <div className="text-sm text-muted-foreground font-medium">{caseStudy.metrics.primaryLabel}</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-4xl font-bold text-gradient-accent mb-2">{caseStudy.metrics.secondary}</div>
+                          <div className="text-sm text-muted-foreground font-medium">{caseStudy.metrics.secondaryLabel}</div>
+                        </div>
+                      </div>
+
+                      {/* Solution & Results */}
+                      <div className="space-y-6">
+                        <div>
+                          <h4 className="text-lg font-semibold text-foreground mb-3">AI Solution Implemented</h4>
+                          <p className="text-muted-foreground leading-relaxed">{caseStudy.solution}</p>
+                        </div>
+                        
+                        <div>
+                          <h4 className="text-lg font-semibold text-foreground mb-4">Key Outcomes</h4>
+                          <div className="space-y-3">
+                            {caseStudy.results.map((result, resultIndex) => (
+                              <div key={resultIndex} className="flex items-start">
+                                <div className="w-2 h-2 bg-gradient-primary rounded-full mr-4 mt-2 flex-shrink-0"></div>
+                                <span className="text-muted-foreground font-medium">{result}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Video/Demo Side */}
+                <div className={index % 2 === 1 ? "lg:order-1" : ""}>
+                  <div className="relative group">
+                    <div className="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl overflow-hidden shadow-2xl">
+                      {/* Placeholder for demo video */}
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-muted/50 to-background border border-border/50 rounded-2xl">
+                        <div className="text-center p-8">
+                          <div className="w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z"/>
+                            </svg>
+                          </div>
+                          <h4 className="text-lg font-semibold text-foreground mb-2">Watch Demo</h4>
+                          <p className="text-sm text-muted-foreground">See the solution in action</p>
+                        </div>
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
                     </div>
-                    <Badge variant="secondary" className="text-xs">
-                      {caseStudy.industry}
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-xl font-semibold text-foreground leading-tight">
-                    {caseStudy.title}
-                  </CardTitle>
-                </CardHeader>
-
-                <CardContent>
-                  {/* Challenge */}
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-2">Challenge</h4>
-                    <CardDescription className="text-sm leading-relaxed">
-                      {caseStudy.challenge}
-                    </CardDescription>
-                  </div>
-
-                  {/* Solution */}
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-2">Solution</h4>
-                    <CardDescription className="text-sm leading-relaxed">
-                      {caseStudy.solution}
-                    </CardDescription>
-                  </div>
-
-                  {/* Key Metrics */}
-                  <div className="grid grid-cols-2 gap-4 mb-6 p-4 bg-muted/30 rounded-lg">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-gradient-accent">{caseStudy.metrics.primary}</div>
-                      <div className="text-xs text-muted-foreground">{caseStudy.metrics.primaryLabel}</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-gradient-accent">{caseStudy.metrics.secondary}</div>
-                      <div className="text-xs text-muted-foreground">{caseStudy.metrics.secondaryLabel}</div>
+                    
+                    {/* Floating metrics */}
+                    <div className="absolute -bottom-6 -right-6 bg-background border border-border/50 rounded-xl p-4 shadow-lg">
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-gradient-primary">
+                          {index === 0 ? "3 weeks" : index === 1 ? "2 weeks" : "1 week"}
+                        </div>
+                        <div className="text-xs text-muted-foreground">Implementation</div>
+                      </div>
                     </div>
                   </div>
-
-                  {/* Results */}
-                  <div>
-                    <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">Key Results</h4>
-                    <ul className="space-y-2">
-                      {caseStudy.results.map((result, resultIndex) => (
-                        <li key={resultIndex} className="flex items-start text-sm text-muted-foreground">
-                          <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                          <span>{result}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </CardContent>
-
-                {/* Hover gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
-              </Card>
+                </div>
+              </div>
             );
           })}
         </div>
