@@ -123,12 +123,14 @@ const Header = () => {
               variant="outline" 
               size="sm" 
               className="bg-white/5 border-white/20 hover:bg-white/10 hover:border-white/30 text-foreground/80 hover:text-primary backdrop-blur-sm transition-all duration-300"
+              onClick={() => window.location.href = '/consultation'}
             >
               Free Audit
             </Button>
             <Button 
               size="sm" 
               className="bg-gradient-to-r from-primary to-primary/80 text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group border-0"
+              onClick={() => window.location.href = '/consultation'}
             >
               Schedule Call
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -141,15 +143,6 @@ const Header = () => {
           </Button>
         </nav>
       </div>
-
-      {/* Optional: Add CSS for additional styling */}
-      <style jsx>{`
-        @media (max-width: 1024px) {
-          .lg\\:flex {
-            display: none;
-          }
-        }
-      `}</style>
     </header>
   );
 };
