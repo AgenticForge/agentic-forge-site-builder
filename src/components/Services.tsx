@@ -1,144 +1,163 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Brain, Network, Sparkles, ArrowRight } from "lucide-react";
-import aiWorkflowIllustration from "@/assets/ai-workflow-illustration.jpg";
-import programmingMonitor from "@/assets/programming-monitor.jpg";
+import { Workflow, MessageSquare, Mail, Phone, ArrowRight, CheckCircle, Sparkles } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const services = [
   {
-    icon: Brain,
-    title: "AI Agent Development",
-    description: "Build sophisticated AI agents with LangGraph that handle complex business processes, make intelligent decisions, and adapt to your workflows.",
-    features: ["Multi-step reasoning", "Context awareness", "Custom business logic", "Enterprise scalability"],
-    highlight: "Most Popular"
+    icon: Workflow,
+    title: "Process Automation",
+    description: "Automate data entry, invoice processing, and approval workflows",
+    benefits: "Save 40+ hours weekly",
+    features: ["Data entry automation", "Invoice processing", "Approval workflows"]
   },
   {
-    icon: Network,
-    title: "Workflow Automation", 
-    description: "Deploy n8n-powered automations with 422+ integrations, connecting your entire tech stack for seamless end-to-end process automation.",
-    features: ["422+ integrations", "Real-time sync", "Error handling", "Visual workflow builder"],
-    highlight: null
+    icon: MessageSquare,
+    title: "Customer Support AI",
+    description: "24/7 AI assistants for instant responses and ticket routing",
+    benefits: "85% faster responses",
+    features: ["24/7 AI chat assistants", "Smart ticket routing", "Sentiment analysis"]
   },
   {
-    icon: Sparkles,
-    title: "Custom AI Solutions",
-    description: "Enterprise-grade AI solutions tailored to your industry requirements, from data processing to intelligent customer interactions.",
-    features: ["Custom algorithms", "Industry-specific", "Scalable architecture", "24/7 monitoring"],
-    highlight: "Enterprise"
+    icon: Mail,
+    title: "Email Marketing",
+    description: "Personalized campaigns with automated lead nurturing",
+    benefits: "300% more conversions",
+    features: ["Personalized sequences", "Lead nurturing", "Audience segmentation"]
+  },
+  {
+    icon: Phone,
+    title: "Voice AI Agents",
+    description: "Appointment booking and automated reminder calls",
+    benefits: "Handle 100+ calls daily",
+    features: ["Appointment booking", "Call reminders", "Follow-up automation"]
   }
 ];
 
 const Services = () => {
-  useScrollAnimation();
+  // useScrollAnimation(); // Assuming this hook works as intended
+
   return (
-    <section id="services" className="py-24 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-20" data-animate>
-          <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-            <Network className="w-4 h-4 mr-2" />
-            Enterprise AI Solutions
+    <section id="services" className="min-h-screen py-24 relative overflow-hidden bg-background">
+      {/* Animated Background Grid */}
+      <div className="absolute inset-0 opacity-30 -z-10">
+        <div className="absolute inset-0 bg-grid-slate-900/[0.04] bg-[size:50px_50px]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
+        <div className="absolute top-20 left-20 w-32 h-32 border border-primary/20 rounded-lg rotate-12 animate-pulse" />
+        <div className="absolute top-40 right-32 w-24 h-24 border border-secondary/20 rounded-full animate-bounce" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-32 left-40 w-28 h-28 border border-primary/15 rounded-lg -rotate-6 animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-20 right-20 w-20 h-20 border border-secondary/15 rounded-full animate-bounce" style={{ animationDelay: '0.5s' }} />
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gradient-to-br from-secondary/10 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s' }} />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Header Section */}
+        <div className="text-center mb-16" data-animate>
+          <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4 border border-primary/20 backdrop-blur-sm">
+            <Sparkles className="w-4 h-4 mr-2" />
+            AI Automation Services
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
-            Transform Your Business with <br />
-            <span className="text-gradient-primary">Intelligent Automation</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+            <span className="bg-gradient-to-r from-primary via-primary/80 to-secondary bg-clip-text text-transparent">
+              Smart AI Solutions
+            </span>
+            <br />
+            <span className="text-foreground">for Modern Business</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            We combine cutting-edge AI technologies like LangGraph and n8n to deliver enterprise-grade automation solutions that scale with your business.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Transform manual processes into intelligent automated systems
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16" data-animate>
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mb-20">
           {services.map((service, index) => {
-            const IconComponent = service.icon;
+            const Icon = service.icon;
             return (
-              <Card 
-                key={index} 
-                className="relative group card-hover border-border/50 hover:border-primary/30 transition-all duration-500 overflow-hidden"
+              <Card
+                key={index}
+                className="group relative bg-background/50 border border-border shadow-lg transition-all duration-500 rounded-xl flex flex-col justify-between overflow-hidden
+                         hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 hover:scale-103 transform"
+                data-animate
               >
-                {service.highlight && (
-                  <div className="absolute top-4 right-4 z-10">
-                    <span className="bg-gradient-primary text-white text-xs font-semibold px-3 py-1 rounded-full">
-                      {service.highlight}
-                    </span>
-                  </div>
-                )}
+                {/* Glow Overlay on Hover */}
+                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 
-                <CardHeader className="pb-4">
-                  <div className="w-16 h-16 gradient-tech rounded-xl flex items-center justify-center mb-6 group-hover:glow-secondary transition-all duration-500 group-hover:scale-110">
-                    <IconComponent className="w-8 h-8 text-white" />
+                <CardHeader className="text-center p-6 pb-2">
+                  <div className="w-14 h-14 mx-auto bg-primary/10 rounded-xl flex items-center justify-center mb-4 transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110">
+                    <Icon className="w-7 h-7 text-primary transition-transform duration-300 group-hover:rotate-6" />
                   </div>
-                  <CardTitle className="text-2xl font-bold text-foreground mb-3 leading-tight">
+                  <CardTitle className="text-lg font-semibold text-foreground mb-1">
                     {service.title}
                   </CardTitle>
+                  <div className="text-xs text-primary font-medium bg-primary/10 border border-primary/20 px-3 py-1 rounded-full inline-block">
+                    {service.benefits}
+                  </div>
                 </CardHeader>
-                <CardContent className="pt-0">
-                  <CardDescription className="text-muted-foreground mb-6 leading-relaxed text-base">
+                <CardContent className="text-center pt-2 px-4 pb-6">
+                  <CardDescription className="text-muted-foreground text-sm mb-4">
                     {service.description}
                   </CardDescription>
-                  <div className="space-y-3">
-                    {service.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center text-sm text-muted-foreground">
-                        <div className="w-2 h-2 bg-gradient-primary rounded-full mr-3 flex-shrink-0"></div>
-                        <span className="font-medium">{feature}</span>
-                      </div>
+                  <ul className="space-y-2 text-sm text-left max-w-xs mx-auto">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span className="text-foreground/90 leading-snug">{feature}</span>
+                      </li>
                     ))}
-                  </div>
-                  
-                  <div className="mt-8">
-                    <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                      Learn More
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </div>
+                  </ul>
                 </CardContent>
-                
-                {/* Enhanced Hover Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/5 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>
               </Card>
             );
           })}
         </div>
 
-        {/* Illustration Section */}
-        <div className="relative mt-20 p-8 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl overflow-hidden" data-animate>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-3xl font-bold mb-6 text-gradient-primary">
-                Built for Enterprise Scale
-              </h3>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Our AI automation solutions are designed from the ground up to handle enterprise workloads, 
-                ensuring reliability, security, and scalability that grows with your business.
-              </p>
-              <div className="grid grid-cols-2 gap-6 mb-8">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gradient-accent mb-2">99.9%</div>
-                  <div className="text-sm text-muted-foreground">Uptime SLA</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gradient-accent mb-2">422+</div>
-                  <div className="text-sm text-muted-foreground">Integrations</div>
-                </div>
-              </div>
-              <Button size="lg" className="gradient-primary text-white">
-                Get Started Today
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </div>
-            <div className="relative">
-              <img 
-                src={programmingMonitor} 
-                alt="Programming and Development" 
-                className="w-full h-auto rounded-xl shadow-2xl"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent rounded-xl"></div>
-            </div>
+        {/* CTA Button Section */}
+        <div className="text-center" data-animate>
+          <div className="relative inline-block">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-full blur-xl scale-150 animate-pulse-light opacity-60 group-hover:opacity-100 transition-opacity" />
+            <Button
+              size="lg"
+              className="relative z-10 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-primary/25 transition-all duration-500 hover:scale-105"
+            >
+              Get Started with AI Automation
+              <ArrowRight className="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+            </Button>
           </div>
+          <p className="mt-4 text-sm text-muted-foreground max-w-md mx-auto">
+            Join 500+ companies already automating their workflows
+          </p>
         </div>
       </div>
+
+      <style jsx>{`
+        .bg-grid-slate-900\/\[0\.04\] {
+          background-image: radial-gradient(circle at 1px 1px, rgba(15, 23, 42, 0.04) 1px, transparent 0);
+        }
+
+        @keyframes pulse-light {
+          0%, 100% {
+            transform: scale(1.5) translateZ(0);
+            opacity: 0.6;
+          }
+          50% {
+            transform: scale(1.6) translateZ(0);
+            opacity: 0.8;
+          }
+        }
+
+        .animate-pulse-light {
+          animation: pulse-light 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        /* Using a scale transform on hover for the card */
+        .hover\\:scale-103:hover {
+          transform: scale(1.03);
+        }
+      `}</style>
     </section>
   );
 };
 
-export default Services;
+export default Services;  
