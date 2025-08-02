@@ -1,4 +1,5 @@
 import { Cog } from "lucide-react";
+import heroLogo from "@/assets/heroLogo.png";
 
 const Footer = () => {
   return (
@@ -9,7 +10,11 @@ const Footer = () => {
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <div className="relative">
-                <Cog className="w-8 h-8 text-primary" />
+                <img 
+                  src={heroLogo} 
+                  alt="AgenticForge Logo" 
+                  className="h-16 w-auto"
+                />
               </div>
               <span className="text-2xl font-bold text-gradient-primary">AgenticForge</span>
             </div>
@@ -17,13 +22,13 @@ const Footer = () => {
               Transform your business with intelligent AI automation. We build sophisticated AI agents and workflow automations using cutting-edge technologies.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://linkedin.com/company/agenticforge" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 LinkedIn
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://twitter.com/agenticforge" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 Twitter
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://github.com/agenticforge" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 GitHub
               </a>
             </div>
@@ -34,22 +39,22 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-foreground mb-4">Services</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#services" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="/services" className="text-muted-foreground hover:text-primary transition-colors">
                   AI Agent Development
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="/services" className="text-muted-foreground hover:text-primary transition-colors">
                   Workflow Automation
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="/services" className="text-muted-foreground hover:text-primary transition-colors">
                   Process Optimization
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="/services" className="text-muted-foreground hover:text-primary transition-colors">
                   AI Consulting
                 </a>
               </li>
@@ -61,22 +66,22 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-foreground mb-4">Company</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="/about" className="text-muted-foreground hover:text-primary transition-colors">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#case-studies" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="/services" className="text-muted-foreground hover:text-primary transition-colors">
                   Case Studies
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
                   Contact
                 </a>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="/blog" className="text-muted-foreground hover:text-primary transition-colors">
                   Blog
                 </a>
               </li>
@@ -90,13 +95,13 @@ const Footer = () => {
             © 2025 AgenticForge. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+            <a href="/legal" className="text-muted-foreground hover:text-primary transition-colors text-sm">
               Privacy Policy
             </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+            <a href="/legal" className="text-muted-foreground hover:text-primary transition-colors text-sm">
               Terms of Service
             </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+            <a href="/legal" className="text-muted-foreground hover:text-primary transition-colors text-sm">
               Cookie Policy
             </a>
           </div>

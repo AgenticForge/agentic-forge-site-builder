@@ -104,10 +104,10 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center sm:space-x-6 space-y-4 sm:space-y-0 pt-4">
-            <Button variant="hero" size="lg" className="px-8 py-4 text-lg">
+            <Button variant="hero" size="lg" className="px-8 py-4 text-lg" onClick={() => window.location.href = '/consultation'}>
               Get Free Consultation <ArrowRight className="ml-2" />
             </Button>
-            <Button variant="outline-glow" size="lg" className="px-8 py-4 text-lg">
+            <Button variant="outline-glow" size="lg" className="px-8 py-4 text-lg" onClick={() => window.location.href = '/demo'}>
               <Play className="mr-2" /> See Demo
             </Button>
           </div>
