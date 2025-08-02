@@ -94,7 +94,7 @@ const CaseStudies = () => {
                           }`}>
                             <IconComponent className="w-8 h-8 text-white" />
                           </div>
-                          <Badge variant="secondary" className="text-sm px-4 py-2 bg-white/80 backdrop-blur-sm border border-gray-200/50 font-medium">
+                          <Badge variant="secondary" className="text-sm px-4 py-2 bg-gray-100 text-gray-800 border border-gray-300 font-medium hover:bg-gray-200 transition-colors">
                             {caseStudy.industry}
                           </Badge>
                         </div>

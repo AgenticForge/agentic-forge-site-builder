@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
-import heroIllustration from "@/assets/hero.png";
+import heroIllustration from "@/assets/hero1.png";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
