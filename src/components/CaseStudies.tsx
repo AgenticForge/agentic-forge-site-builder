@@ -1,6 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Phone, Mail, Database, Clock, Users, TrendingUp, CheckCircle, ArrowRight } from "lucide-react";
+import { ArrowRight, TrendingUp, Users, DollarSign, Clock, Phone, Mail, Database, CheckCircle } from "lucide-react";
+import { motion } from "framer-motion";
 
 const cases = [
   {
@@ -49,31 +51,90 @@ const cases = [
 ];
 
 const CaseStudies = () => {
+  // Add JSON-LD structured data for better SEO
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": cases.map((caseStudy, index) => ({
+      "@type": "Case",
+      "position": index + 1,
+      "name": caseStudy.title,
+      "description": caseStudy.challenge,
+      "result": caseStudy.results,
+      "industry": caseStudy.industry,
+      "provider": {
+        "@type": "Organization",
+        "name": "Agentic Forge",
+        "url": "https://agenticforge.tech"
+      }
+    }))
+  };
+
   return (
-    <section id="case-studies" className="py-24 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20">
-      <div className="container mx-auto px-6">
+    <section 
+      id="case-studies" 
+      className="py-12 md:py-24 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20"
+      aria-label="Case Studies Section"
+    >
+      {/* Add structured data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Header Section */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 text-blue-700 rounded-full text-sm font-semibold mb-8 border border-blue-200/50">
-            <TrendingUp className="w-4 h-4 mr-2" />
+        <div className="text-center mb-12 md:mb-20">
+          <div 
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 text-blue-700 rounded-full text-sm font-semibold mb-8 border border-blue-200/50"
+            role="doc-subtitle"
+            aria-label="Section Category"
+          >
+            <TrendingUp className="w-4 h-4 mr-2" aria-hidden="true" />
             Case Studies
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-8 leading-tight bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-800 bg-clip-text text-transparent">
-            Transforming Businesses with <br />
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">AI Automation</span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <h1 
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 leading-tight"
+            itemProp="headline"
+          >
+            Transforming{" "}
+            <span className="relative inline-block">
+              Businesses
+              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-300/0 via-indigo-400/50 to-blue-300/0 rounded-full" />
+            </span>{" "}
+            with{" "}
+            <span 
+              className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent block mt-2 sm:mt-4"
+              itemProp="alternativeHeadline"
+            >
+              AI Automation
+            </span>
+          </h1>
+          <p 
+            className="text-base sm:text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4 sm:px-6"
+            itemProp="description"
+          >
             Discover how we've helped businesses automate complex workflows, enhance customer experiences, 
             and achieve measurable growth through intelligent AI solutions.
           </p>
         </div>
 
         {/* Case Studies */}
-        <div className="space-y-24">
+        <div className="space-y-12 md:space-y-24">
           {cases.map((caseStudy, index) => {
             const IconComponent = caseStudy.icon;
             return (
-              <div key={index} className="relative">
+              <article 
+                key={index} 
+                className="relative px-2 sm:px-4"
+                itemScope
+                itemType="https://schema.org/Article"
+              >
+                {/* SEO Meta Tags */}
+                <meta itemProp="datePublished" content="2025-08-04" />
+                <meta itemProp="author" content="Agentic Forge" />
+                <meta itemProp="keywords" content={`${caseStudy.techStack.join(', ')}, AI Solutions, Business Automation, ${caseStudy.industry}`} />
+                <meta itemProp="image" content={`/ai-case-study-${index + 1}.jpg`} />
+                
                 {/* Background decoration */}
                 <div className={`absolute inset-0 bg-gradient-to-r ${
                   index === 0 
@@ -98,19 +159,32 @@ const CaseStudies = () => {
                             {caseStudy.industry}
                           </Badge>
                         </div>
-                        <CardTitle className="text-4xl font-bold text-gray-900 leading-tight mb-6">
+                        <CardTitle 
+                          className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4 md:mb-6"
+                          id={`case-study-${index}`}
+                          itemProp="headline"
+                        >
                           {caseStudy.title}
                         </CardTitle>
-                        <CardDescription className="text-lg text-gray-600 leading-relaxed">
+                        <CardDescription 
+                          className="text-base sm:text-lg text-gray-600 leading-relaxed"
+                          itemProp="description"
+                        >
                           <span className="font-semibold text-gray-800">Challenge:</span> {caseStudy.challenge}
                         </CardDescription>
                       </CardHeader>
 
                       <CardContent className="px-0 space-y-8">
                         {/* Key Metrics */}
-                        <div className="grid grid-cols-2 gap-6 p-8 bg-white/60 backdrop-blur-sm rounded-2xl border border-gray-200/50 shadow-sm">
+                        <div 
+                          className="grid grid-cols-2 gap-3 sm:gap-6 p-4 sm:p-8 bg-white/60 backdrop-blur-sm rounded-2xl border border-gray-200/50 shadow-sm"
+                          itemProp="aggregateRating"
+                          itemScope
+                          itemType="https://schema.org/AggregateRating"
+                        >
                           <div className="text-center">
-                            <div className={`text-5xl font-bold mb-3 bg-gradient-to-r ${
+                            <div 
+                              className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-3 bg-gradient-to-r ${
                               index === 0 
                                 ? 'from-blue-600 to-indigo-600' 
                                 : 'from-indigo-600 to-purple-600'
@@ -132,12 +206,18 @@ const CaseStudies = () => {
                         </div>
 
                         {/* Solution */}
-                        <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/30">
-                          <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                            <CheckCircle className="w-5 h-5 mr-2 text-green-600" />
-                            AI Solution Implemented
+                        <div 
+                          className="bg-white/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/30"
+                          itemProp="articleBody"
+                        >
+                          <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 flex items-center">
+                            <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 mr-2 text-green-600" aria-hidden="true" />
+                            <span itemProp="about">AI Solution Implemented</span>
                           </h4>
-                          <p className="text-gray-700 leading-relaxed mb-4">{caseStudy.solution}</p>
+                          <p 
+                            className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4"
+                            itemProp="text"
+                          >{caseStudy.solution}</p>
                           
                           {/* Tech Stack */}
                           <div className="flex flex-wrap gap-2">
@@ -150,12 +230,15 @@ const CaseStudies = () => {
                         </div>
                         
                         {/* Results */}
-                        <div>
+                        <div itemProp="articleBody">
                           <h4 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                            <TrendingUp className="w-5 h-5 mr-2 text-green-600" />
-                            Key Outcomes
+                            <TrendingUp className="w-5 h-5 mr-2 text-green-600" aria-hidden="true" />
+                            <span itemProp="about">Key Outcomes</span>
                           </h4>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div 
+                            className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                            itemProp="result"
+                          >
                             {caseStudy.results.map((result, resultIndex) => (
                               <div key={resultIndex} className="flex items-start p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-gray-200/30">
                                 <div className={`w-2 h-2 rounded-full mr-3 mt-2 flex-shrink-0 bg-gradient-to-r ${
@@ -168,22 +251,6 @@ const CaseStudies = () => {
                             ))}
                           </div>
                         </div>
-
-                        {/* GitHub Link for BandhanAI */}
-                        {caseStudy.githubUrl && (
-                          <div className="pt-4">
-                            <a 
-                              href={caseStudy.githubUrl} 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-gray-900 to-gray-800 text-white rounded-xl hover:from-gray-800 hover:to-gray-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
-                            >
-                              <Database className="w-4 h-4 mr-2" />
-                              View Source Code
-                              <ArrowRight className="w-4 h-4 ml-2" />
-                            </a>
-                          </div>
-                        )}
                       </CardContent>
                     </Card>
                   </div>
@@ -199,12 +266,21 @@ const CaseStudies = () => {
                               ? 'from-blue-500 to-blue-600' 
                               : 'from-indigo-500 to-purple-600'
                           } shadow-lg`}>
-                            <IconComponent className="w-16 h-16 text-white" />
+                            <IconComponent 
+                              className="w-16 h-16 text-white" 
+                              aria-label={`${caseStudy.title} icon`}
+                            />
                           </div>
-                          <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                          <h3 
+                            className="text-2xl font-bold text-gray-900 mb-4"
+                            itemProp="name"
+                          >
                             {index === 0 ? "Live Demo Available" : "Interactive Platform"}
                           </h3>
-                          <p className="text-gray-600 leading-relaxed mb-6 max-w-sm">
+                          <p 
+                            className="text-gray-600 leading-relaxed mb-6 max-w-sm"
+                            itemProp="description"
+                          >
                             {caseStudy.demoDescription}
                           </p>
                           <div className="flex items-center text-sm text-gray-500">
@@ -235,18 +311,31 @@ const CaseStudies = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
 
         {/* Call to Action */}
         <div className="text-center mt-20">
-          <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-2xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
+          <button 
+            onClick={() => {
+              // Add a small delay to ensure the component is mounted
+              setTimeout(() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }, 100);
+            }}
+            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm sm:text-base rounded-xl sm:rounded-2xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer"
+            aria-label="Contact us to transform your business"
+            role="button"
+          >
             <Users className="w-5 h-5 mr-2" />
             Ready to Transform Your Business?
             <ArrowRight className="w-5 h-5 ml-2" />
-          </div>
+          </button>
         </div>
       </div>
     </section>

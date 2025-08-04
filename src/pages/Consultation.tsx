@@ -136,7 +136,13 @@ const Consultation = () => {
                   <span className="text-sm text-muted-foreground">No obligation</span>
                 </div>
               </div>
-              <Button variant="hero" className="w-full mt-6">
+              <Button 
+                variant="hero" 
+                className="w-full mt-6"
+                onClick={() => {
+                  window.location.href = '/#contact';
+                }}
+              >
                 Schedule Now <ArrowRight className="ml-2" />
               </Button>
             </div>
@@ -240,7 +246,13 @@ const Consultation = () => {
             Schedule your free consultation today and discover how AI automation can revolutionize your operations.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="lg">
+            <Button 
+              variant="hero" 
+              size="lg"
+              onClick={() => {
+                window.location.href = '/#contact';
+              }}
+            >
               Schedule Free Consultation <ArrowRight className="ml-2" />
             </Button>
             <Button variant="outline" size="lg">
