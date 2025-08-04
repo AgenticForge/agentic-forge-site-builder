@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   Card,
   CardContent,
@@ -10,10 +11,95 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, MapPin, Calendar, X } from "lucide-react";
+import { Mail, Phone, MapPin, Calendar, X, Star, CheckCircle, Award, Sparkles, ArrowRight, Users, MessageSquare, Clock, Shield, Calculator, TrendingUp, DollarSign, Zap } from "lucide-react";
 import { toast } from "sonner"; // Optional: replace with alert if not using
 
+// Custom CSS for premium animations
+const premiumStyles = `
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+  
+  .shadow-3xl {
+    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* Premium Range Slider Styles */
+  .slider {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  
+  .slider::-webkit-slider-track {
+    background: transparent;
+    height: 8px;
+    border-radius: 4px;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.6);
+  }
+  
+  .slider::-moz-range-track {
+    background: transparent;
+    height: 8px;
+    border-radius: 4px;
+    border: none;
+  }
+  
+  .slider::-moz-range-thumb {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  }
+`;
+
 const Contact = () => {
+  // Inject custom styles
+  if (typeof document !== 'undefined') {
+    const styleElement = document.createElement('style');
+    styleElement.textContent = premiumStyles;
+    if (!document.head.querySelector('style[data-contact-styles]')) {
+      styleElement.setAttribute('data-contact-styles', 'true');
+      document.head.appendChild(styleElement);
+    }
+  }
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -25,10 +111,51 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false); // 🚀 Cal modal state
 
+  // ROI Calculator state
+  const [roiData, setRoiData] = useState({
+    employees: 50,
+    hoursPerEmployee: 8,
+    hourlyWage: 25,
+    inefficiencyPercent: 30,
+    automationPercent: 70
+  });
+
+  const [showRoiResults, setShowRoiResults] = useState(true); // Always show ROI results
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
+
+  const handleRoiChange = (field, value) => {
+    setRoiData((prev) => ({ ...prev, [field]: Number(value) }));
+    setShowRoiResults(true);
+  };
+
+  // ROI Calculations
+  const calculateROI = () => {
+    const { employees, hoursPerEmployee, hourlyWage, inefficiencyPercent, automationPercent } = roiData;
+    
+    // Current inefficient time cost
+    const dailyWastedHours = (employees * hoursPerEmployee * inefficiencyPercent) / 100;
+    const dailyWastedCost = dailyWastedHours * hourlyWage;
+    const yearlyWastedCost = dailyWastedCost * 250; // 250 working days
+    
+    // Potential savings through automation
+    const automationSavings = (yearlyWastedCost * automationPercent) / 100;
+    const monthlySavings = automationSavings / 12;
+    const productivityIncrease = (automationPercent * inefficiencyPercent) / 100;
+    
+    return {
+      yearlyWaste: yearlyWastedCost,
+      automationSavings,
+      monthlySavings,
+      productivityIncrease,
+      roi: ((automationSavings - 50000) / 50000) * 100 // Assuming $50k implementation cost
+    };
+  };
+
+  const roiResults = calculateROI();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,230 +195,420 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-24 gradient-hero circuit-pattern relative"
+      className="py-20 relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50/50"
     >
-      <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to{" "}
-              <span className="text-gradient-primary">Transform</span> Your
-              Business?
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Get started with a free AI automation audit. We'll analyze your
-              current processes and identify opportunities for intelligent
-              automation.
-            </p>
-          </div>
+      {/* Ultra-Premium Background Effects */}
+      <div className="absolute inset-0">
+        {/* Dynamic gradient orbs */}
+        <div className="absolute top-20 left-20 w-80 h-80 bg-gradient-to-br from-blue-100/30 via-indigo-200/15 to-transparent rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-32 right-16 w-96 h-96 bg-gradient-to-bl from-sky-100/40 via-blue-100/20 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}} />
+        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-r from-indigo-50/40 to-sky-100/30 rounded-full blur-2xl animate-pulse" style={{animationDelay: '1s'}} />
+        <div className="absolute top-16 right-1/4 w-48 h-48 bg-gradient-to-tl from-blue-200/20 to-indigo-200/15 rounded-full blur-xl animate-pulse" style={{animationDelay: '3s'}} />
+        
+        {/* Floating particles */}
+        <div className="absolute top-32 right-1/4 w-2 h-2 bg-blue-300/40 rounded-full animate-bounce shadow-sm shadow-blue-200/20" style={{animationDelay: '0.5s'}} />
+        <div className="absolute bottom-40 left-1/5 w-1.5 h-1.5 bg-indigo-300/50 rounded-full animate-bounce shadow-sm shadow-indigo-200/30" style={{animationDelay: '1.5s'}} />
+        <div className="absolute top-3/4 right-1/3 w-1 h-1 bg-sky-200/60 rounded-full animate-bounce shadow-sm shadow-sky-100/40" style={{animationDelay: '2.5s'}} />
+        <div className="absolute top-1/4 left-1/2 w-2 h-2 bg-blue-400/40 rounded-full animate-bounce shadow-sm shadow-blue-200/30" style={{animationDelay: '4s'}} />
+        
+        {/* Premium light rays */}
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-px h-32 bg-gradient-to-b from-blue-200/30 to-transparent" />
+        <div className="absolute bottom-0 right-1/4 w-px h-24 bg-gradient-to-t from-indigo-200/25 to-transparent" />
+        <div className="absolute top-1/3 left-0 w-16 h-px bg-gradient-to-r from-transparent to-blue-100/25" />
+        <div className="absolute bottom-1/3 right-0 w-20 h-px bg-gradient-to-l from-transparent to-sky-100/20" />
+        
+        {/* Premium grid patterns */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.015)_1px,transparent_1px)] bg-[size:60px_60px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.01)_1px,transparent_1px)] bg-[size:120px_120px]" />
+        
+        {/* Interactive mouse follower */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.03),transparent_50%)] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+      </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <Card className="bg-card/80 backdrop-blur-sm border-border/30">
-              <CardHeader>
-                <CardTitle className="text-2xl font-bold text-foreground">
-                  Get Your Free AI Audit
-                </CardTitle>
-                <CardDescription className="text-muted-foreground">
-                  Tell us about your business and we'll show you how AI
-                  automation can transform your operations.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName">First Name</Label>
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          {/* Ultra-Premium Header */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-50/90 via-white/80 to-indigo-50/90 border border-blue-200/50 text-blue-700 text-sm font-medium mb-6 backdrop-blur-sm shadow-sm">
+              <MessageSquare className="w-5 h-5 mr-2" />
+              Get Started Today
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              Ready to{" "}
+              <span className="relative">
+                <span className="bg-gradient-to-r from-blue-700 via-indigo-600 to-sky-600 bg-clip-text text-transparent">
+                  Transform
+                </span>
+                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-300/0 via-indigo-400/50 to-blue-300/0 rounded-full" />
+              </span>{" "}
+              Your Business?
+            </h2>
+            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium mb-6">
+              Get started with a comprehensive AI automation audit. We'll analyze your current processes and identify breakthrough opportunities for intelligent automation and exponential growth.
+            </p>
+            
+            {/* Enhanced decorative elements */}
+            <div className="flex items-center justify-center space-x-8 mt-6">
+              <div className="w-12 h-px bg-gradient-to-r from-blue-200 to-indigo-300" />
+              <Star className="w-6 h-6 text-indigo-500" />
+              <div className="w-12 h-px bg-gradient-to-r from-indigo-300 to-blue-200" />
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Minimalistic Get Your Free AI Audit Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="group"
+            >
+              <Card className="relative bg-white/95 backdrop-blur-sm border border-blue-200/40 shadow-lg hover:shadow-xl transition-all duration-500 rounded-2xl overflow-hidden h-full">
+                <CardHeader className="relative z-10 p-5 pb-3">
+                  <div className="flex items-center mb-3">
+                    <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl shadow-lg mr-3">
+                      <Mail className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl font-bold text-gray-800">
+                        Get Your Free AI Audit
+                      </CardTitle>
+                    </div>
+                  </div>
+                  <CardDescription className="text-gray-600 text-sm">
+                    Discover how AI can transform your business operations
+                  </CardDescription>
+                </CardHeader>
+
+                <CardContent className="p-5 pt-2 relative z-10">
+                  <form onSubmit={handleSubmit} className="space-y-3">
+                    <div className="grid grid-cols-2 gap-2">
                       <Input
                         id="firstName"
-                        placeholder="John"
-                        className="bg-background/50"
+                        placeholder="First Name"
+                        className="h-9 text-sm bg-white/80 border-blue-200/60 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                         value={formData.firstName}
                         onChange={handleChange}
                         required
                       />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName">Last Name</Label>
                       <Input
                         id="lastName"
-                        placeholder="Doe"
-                        className="bg-background/50"
+                        placeholder="Last Name"
+                        className="h-9 text-sm bg-white/80 border-blue-200/60 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                         value={formData.lastName}
                         onChange={handleChange}
                         required
                       />
                     </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
                     <Input
                       id="email"
                       type="email"
-                      placeholder="john@company.com"
-                      className="bg-background/50"
+                      placeholder="Business Email"
+                      className="h-9 text-sm bg-white/80 border-blue-200/60 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                       value={formData.email}
                       onChange={handleChange}
                       required
                     />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="company">Company Name</Label>
                     <Input
                       id="company"
-                      placeholder="Your Company Inc."
-                      className="bg-background/50"
+                      placeholder="Company Name"
+                      className="h-9 text-sm bg-white/80 border-blue-200/60 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                       value={formData.company}
                       onChange={handleChange}
                     />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="project">Project Description</Label>
                     <Textarea
                       id="project"
-                      placeholder="Tell us about your current processes and what you'd like to automate..."
-                      className="bg-background/50 min-h-[120px]"
+                      placeholder="Tell us about your business challenges..."
+                      className="text-sm bg-white/80 border-blue-200/60 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 min-h-[70px] resize-none"
                       value={formData.project}
                       onChange={handleChange}
                       required
                     />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    variant="hero"
-                    size="lg"
-                    className="w-full"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "Submitting..." : "Get Free AI Audit"}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-
-            {/* Contact Info & CTA */}
-            <div className="space-y-8">
-              <Card className="bg-card/80 backdrop-blur-sm border-border/30">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-foreground mb-6">
-                    Quick Actions
-                  </h3>
-                  <div className="space-y-4">
                     <Button
-                      variant="outline-glow"
-                      size="lg"
-                      className="w-full justify-start"
-                      onClick={() => setIsModalOpen(true)}
+                      type="submit"
+                      className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-sm"
+                      disabled={isSubmitting}
                     >
-                      <Calendar className="mr-3" />
-                      Schedule Discovery Call
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Get Free AI Audit
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </>
+                      )}
                     </Button>
-                    <Button variant="tech" size="lg" className="w-full justify-start">
-                      <Mail className="mr-3" />
-                      Email Us Directly
-                    </Button>
-                  </div>
+                  </form>
                 </CardContent>
               </Card>
+            </motion.div>
 
-              <Card className="bg-card/80 backdrop-blur-sm border-border/30">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-foreground mb-6">
-                    Get In Touch
-                  </h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-4">
-                      <div className="gradient-primary p-2 rounded-lg">
-                        <Mail className="w-5 h-5 text-white" />
+            {/* ROI Calculator */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="group"
+            >
+              <Card className="relative bg-white/90 backdrop-blur-sm border border-blue-200/50 shadow-xl shadow-blue-200/20 hover:shadow-2xl hover:shadow-indigo-300/30 transition-all duration-700 rounded-3xl overflow-hidden h-full">
+                {/* Premium background effects */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/40 via-white/20 to-indigo-50/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-blue-100/20 to-transparent rounded-full blur-3xl group-hover:scale-150 transition-transform duration-1000" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-indigo-100/15 to-transparent rounded-full blur-2xl group-hover:scale-125 transition-transform duration-800" />
+                
+                {/* Floating decorative elements */}
+                <div className="absolute top-6 right-6 w-2 h-2 bg-blue-300/40 rounded-full animate-pulse group-hover:scale-150 transition-transform duration-500" />
+                <div className="absolute bottom-8 right-8 w-1.5 h-1.5 bg-indigo-300/50 rounded-full animate-pulse group-hover:scale-200 transition-transform duration-600" style={{animationDelay: '1s'}} />
+                
+                <CardHeader className="relative z-10 p-5">
+                  <div className="flex items-center mb-3">
+                    <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl shadow-lg shadow-blue-300/30 mr-3">
+                      <Calculator className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-2xl font-bold text-gray-800 mb-1">
+                        AI ROI Calculator
+                      </CardTitle>
+                      <div className="w-16 h-1 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full" />
+                    </div>
+                  </div>
+                  <CardDescription className="text-gray-600 text-sm">
+                    Calculate your potential savings with AI automation in real-time
+                  </CardDescription>
+                </CardHeader>
+
+                <CardContent className="p-5 pt-0 relative z-10">
+                  {/* ROI Input Fields */}
+                  <div className="space-y-3 mb-5">
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <Label className="text-xs font-semibold text-gray-600 mb-1 block">Employees</Label>
+                        <Input
+                          type="number"
+                          value={roiData.employees}
+                          onChange={(e) => handleRoiChange('employees', e.target.value)}
+                          className="h-9 text-sm bg-white/90 border-blue-200/60"
+                        />
                       </div>
                       <div>
-                        <div className="font-medium text-foreground">Email</div>
-                        <div className="text-muted-foreground">
-                          contact@agenticforge.tech
+                        <Label className="text-xs font-semibold text-gray-600 mb-1 block">Avg. Hourly Wage ($)</Label>
+                        <Input
+                          type="number"
+                          value={roiData.hourlyWage}
+                          onChange={(e) => handleRoiChange('hourlyWage', e.target.value)}
+                          className="h-9 text-sm bg-white/90 border-blue-200/60"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label className="text-xs font-semibold text-gray-600 mb-1 block">Current Inefficiency: {roiData.inefficiencyPercent}%</Label>
+                      <div className="relative">
+                        {/* Progress bar background */}
+                        <div className="w-full h-2 bg-blue-100 rounded-lg overflow-hidden">
+                          {/* Animated progress fill */}
+                          <motion.div
+                            className="h-full bg-gradient-to-r from-blue-400 to-indigo-500 rounded-lg"
+                            initial={{ width: 0 }}
+                            animate={{ 
+                              width: `${((roiData.inefficiencyPercent - 10) / (60 - 10)) * 100}%` 
+                            }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
+                          />
+                        </div>
+                        {/* Range slider on top */}
+                        <input
+                          type="range"
+                          min="10"
+                          max="60"
+                          value={roiData.inefficiencyPercent}
+                          onChange={(e) => handleRoiChange('inefficiencyPercent', e.target.value)}
+                          className="absolute top-0 w-full h-2 bg-transparent rounded-lg appearance-none cursor-pointer slider"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label className="text-xs font-semibold text-gray-600 mb-1 block">AI Automation Potential: {roiData.automationPercent}%</Label>
+                      <div className="relative">
+                        {/* Progress bar background */}
+                        <div className="w-full h-2 bg-blue-100 rounded-lg overflow-hidden">
+                          {/* Animated progress fill */}
+                          <motion.div
+                            className="h-full bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg"
+                            initial={{ width: 0 }}
+                            animate={{ 
+                              width: `${((roiData.automationPercent - 30) / (90 - 30)) * 100}%` 
+                            }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
+                          />
+                        </div>
+                        {/* Range slider on top */}
+                        <input
+                          type="range"
+                          min="30"
+                          max="90"
+                          value={roiData.automationPercent}
+                          onChange={(e) => handleRoiChange('automationPercent', e.target.value)}
+                          className="absolute top-0 w-full h-2 bg-transparent rounded-lg appearance-none cursor-pointer slider"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ROI Results */}
+                  {showRoiResults && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5 }}
+                      className="bg-gradient-to-br from-blue-50/80 to-white rounded-2xl p-4 border border-blue-200/40"
+                    >
+                      <h4 className="text-lg font-bold text-gray-800 mb-2 flex items-center">
+                        <TrendingUp className="w-5 h-5 mr-2 text-indigo-600" />
+                        Your Potential ROI
+                      </h4>
+                      
+                      <div className="grid grid-cols-2 gap-3 mb-3">
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-indigo-600">
+                            ${Math.round(roiResults.monthlySavings).toLocaleString()}
+                          </div>
+                          <div className="text-xs text-gray-600">Monthly Savings</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-blue-700">
+                            ${Math.round(roiResults.automationSavings).toLocaleString()}
+                          </div>
+                          <div className="text-xs text-gray-600">Annual Savings</div>
                         </div>
                       </div>
-                    </div>
 
-                    <div className="flex items-center space-x-4">
-                      <div className="gradient-tech p-2 rounded-lg">
-                        <Phone className="w-5 h-5 text-white" />
+                      <div className="grid grid-cols-2 gap-3 mb-3">
+                        <div className="text-center">
+                          <div className="text-xl font-bold text-blue-500">
+                            {Math.round(roiResults.productivityIncrease)}%
+                          </div>
+                          <div className="text-xs text-gray-600">Productivity Boost</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-xl font-bold text-indigo-600">
+                            {Math.round(roiResults.roi)}%
+                          </div>
+                          <div className="text-xs text-gray-600">ROI in Year 1</div>
+                        </div>
                       </div>
-                      <div>
-                        <div className="font-medium text-foreground">Phone</div>
-                        <div className="text-muted-foreground">+91 70221 85683</div>
-                      </div>
-                    </div>
 
-                    <div className="flex items-center space-x-4">
-                      <div className="gradient-primary p-2 rounded-lg">
-                        <MapPin className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <div className="font-medium text-foreground">Location</div>
-                        <div className="text-muted-foreground">Remote & Global</div>
-                      </div>
+                      <Button
+                        className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                        onClick={() => setIsModalOpen(true)}
+                      >
+                        <Calendar className="w-4 h-4 mr-2" />
+                        Book Free Consultation
+                      </Button>
+                    </motion.div>
+                  )}
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+
+          {/* Compact Trust Indicators Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="mt-8"
+          >
+            <Card className="relative bg-gradient-to-br from-blue-50/90 via-white/95 to-indigo-50/80 backdrop-blur-sm border border-blue-200/50 shadow-lg hover:shadow-xl transition-all duration-500 rounded-2xl overflow-hidden">
+              <CardContent className="p-6 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                  {/* Contact Info */}
+                  <div className="text-center md:text-left">
+                    <div className="flex items-center justify-center md:justify-start mb-2">
+                      <Mail className="w-5 h-5 text-gray-600 mr-2" />
+                      <span className="font-bold text-gray-800">Contact</span>
+                    </div>
+                    <div className="text-sm text-gray-600 space-y-1">
+                      <div>contact@agenticforge.tech</div>
+                      <div>+91 70221 85683</div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
 
-              <Card className="bg-gradient-to-br from-primary/10 to-secondary/10 border-primary/20">
-                <CardContent className="p-8 text-center">
-                  <h3 className="text-xl font-bold text-foreground mb-4">What You Get</h3>
-                  <ul className="space-y-3 text-left">
-                    <li className="flex items-center text-muted-foreground">
-                      <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                      Comprehensive process analysis
-                    </li>
-                    <li className="flex items-center text-muted-foreground">
-                      <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                      Custom automation recommendations
-                    </li>
-                    <li className="flex items-center text-muted-foreground">
-                      <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                      ROI projections and timeline
-                    </li>
-                    <li className="flex items-center text-muted-foreground">
-                      <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                      No-obligation consultation
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
+                  {/* Quick Action */}
+                  <div className="text-center">
+                    <Button
+                      className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-semibold px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                      onClick={() => setIsModalOpen(true)}
+                    >
+                      <Calendar className="w-4 h-4 mr-2" />
+                      Schedule Call
+                    </Button>
+                  </div>
+
+                  {/* Trust Indicator */}
+                  <div className="text-center md:text-right">
+                    <div className="flex items-center justify-center md:justify-end mb-1">
+                      <Award className="w-5 h-5 text-indigo-600 mr-2" />
+                      <span className="font-bold text-indigo-600 text-lg">500+</span>
+                    </div>
+                    <div className="text-sm text-gray-600">Companies Transformed</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
       </div>
 
-      {/* Decorative */}
-      <div className="absolute top-10 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl animate-pulse" />
-      <div
-        className="absolute bottom-10 right-10 w-32 h-32 bg-secondary/10 rounded-full blur-xl animate-pulse"
-        style={{ animationDelay: "1s" }}
-      />
+      {/* Refined Floating Decorative Elements */}
+      <div className="absolute top-10 left-10 w-24 h-24 bg-gradient-to-br from-blue-300/10 to-indigo-300/12 rounded-full blur-2xl animate-pulse" />
+      <div className="absolute bottom-10 right-10 w-32 h-32 bg-gradient-to-bl from-indigo-200/12 to-blue-300/8 rounded-full blur-2xl animate-pulse" style={{animationDelay: '1s'}} />
 
-      {/* 🚀 Modal for Cal.com scheduling */}
+      {/* 🚀 Enhanced Modal for Cal.com scheduling */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center">
-          <div className="relative bg-white rounded-xl w-[90%] max-w-3xl h-[600px] shadow-2xl">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setIsModalOpen(false)}
+        >
+          <motion.div 
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 30 }}
+            className="relative bg-white rounded-2xl w-full max-w-4xl h-[600px] shadow-2xl overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               onClick={() => setIsModalOpen(false)}
-              className="absolute top-3 right-3 z-50 text-gray-600 hover:text-black"
+              className="absolute top-3 right-3 z-50 w-8 h-8 bg-white/90 hover:bg-white rounded-full flex items-center justify-center text-slate-600 hover:text-slate-800 shadow-md hover:shadow-lg transition-all duration-300"
             >
-              <X className="h-6 w-6" />
+              <X className="h-4 w-4" />
             </button>
             <iframe
               src="https://cal.com/agenticforge/30min"
-              className="w-full h-full rounded-xl border-none"
+              className="w-full h-full rounded-2xl border-none"
               allow="camera; microphone; fullscreen; display-capture"
               title="Schedule Discovery Call"
             />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       )}
     </section>
   );
