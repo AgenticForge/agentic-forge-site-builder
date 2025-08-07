@@ -16,7 +16,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/agentic-forge-site-builder">
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/legal" element={<Legal />} />
