@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const DemoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  
+
   const handleBack = () => {
     window.history.back();
   };
@@ -30,15 +30,20 @@ const DemoSection = () => {
       
       {/* Animated gradient orbs */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-200/20 via-blue-300/15 to-transparent rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-blue-300/15 via-blue-400/10 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}} />
+      <div
+        className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-blue-300/15 via-blue-400/10 to-transparent rounded-full blur-3xl animate-pulse"
+        style={{ animationDelay: "2s" }}
+      />
       
       <div className="container mx-auto px-6 relative">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">
-            See Our AI Agents in <span className="text-gradient-primary">Action</span>
+            See Our AI Agents in{" "}
+            <span className="text-gradient-primary">Action</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Watch how our AI agents transform business processes and automate complex workflows in real-time.
+            Watch how our AI agents transform business processes and automate
+            complex workflows in real-time.
           </p>
         </div>
 
@@ -50,13 +55,15 @@ const DemoSection = () => {
             <div className="aspect-video relative overflow-hidden rounded-lg">
               <iframe
                 className="w-full h-full"
-                src={`https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=0&rel=0${isPlaying ? '&autoplay=1' : ''}`}
+                src={`https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=0&rel=0${
+                  isPlaying ? "&autoplay=1" : ""
+                }`}
                 title="AgenticForge AI Demo"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
               {!isPlaying && (
-                <div 
+                <div
                   className="absolute inset-0 bg-gradient-to-br from-blue-900/90 to-slate-900/90 flex items-center justify-center cursor-pointer group"
                   onClick={() => setIsPlaying(true)}
                 >
@@ -75,19 +82,19 @@ const DemoSection = () => {
         {/* Call to Action */}
         <div className="mt-12 text-center">
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
+            <Button
               variant="hero"
-              size="lg" 
+              size="lg"
               className="group"
-              onClick={() => window.location.href = '/demo'}
+              onClick={() => (window.location.href = "/demo")}
             >
               Try Demo
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               size="lg"
-              onClick={() => window.location.href = '/consultation'}
+              onClick={() => (window.location.href = "/consultation")}
             >
               Schedule Demo Call
             </Button>
