@@ -3,11 +3,11 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import Legal from "./pages/Legal";
-import Consultation from "./pages/Consultation";
-import Demo from "./pages/Demo";
+import Index from "./components/Index";
+import NotFound from "./components/NotFound";
+import Legal from "./components/Legal";
+import Consultation from "./components/Consultation";
+import Demo from "./components/Demo";
 
 const queryClient = new QueryClient();
 
@@ -16,7 +16,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename="/agentic-forge-site-builder">
+      <BrowserRouter basename={import.meta.env.MODE === 'production' ? '/agentic-forge-site-builder' : '/'} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/legal" element={<Legal />} />

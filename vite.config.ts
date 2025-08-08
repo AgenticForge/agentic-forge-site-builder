@@ -5,7 +5,21 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/agentic-forge-site-builder/', // Add this line - should match your repository name
+  base: mode === 'production' ? '/agentic-forge-site-builder/' : '/',
+  build: {
+    assetsDir: 'assets',
+    outDir: 'dist',
+    manifest: true,
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+      },
+    },
+  },
   server: {
     host: "::",
     port: 8080,

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Menu, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 // Custom hook for better active section detection
 const useActiveSection = () => {
@@ -48,6 +49,20 @@ const useActiveSection = () => {
 
 const Header = () => {
   const activeSection = useActiveSection();
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/');
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   // Navigation items configuration
   const navigationItems = [
@@ -63,12 +78,14 @@ const Header = () => {
       <div className="container mx-auto px-6 py-4">
         <nav className="flex items-center justify-between">
           {/* Logo - Properly sized for 500x191 dimensions */}
-          <div className="flex items-center space-x-3">
-            <img 
-              src="/logo-landscape.png" 
-              alt="AgenticForge Logo" 
-              className="h-16"
-            />
+          <div className="flex items-center space-x-3 cursor-pointer" onClick={handleLogoClick}>
+            <a href="/" onClick={handleLogoClick}>
+              <img 
+                src="/logo-landscape.png" 
+                alt="AgenticForge Logo" 
+                className="h-16"
+              />
+            </a>
           </div>
 
           {/* Enhanced Desktop Navigation with Persistent Active Underline */}
