@@ -73,7 +73,7 @@ const Footer = () => {
                   <Linkedin className="w-6 h-6 text-slate-600 group-hover:text-blue-600 transition-colors relative z-10" />
                 </a>
                 <a 
-                  href="https://facebook.com/agenticforge" 
+                  href="https://www.facebook.com/profile.php?id=61578807397652" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="group relative w-12 h-12 bg-gradient-to-br from-blue-100/60 to-blue-200/50 rounded-full border border-blue-300/50 hover:border-blue-400/70 transition-all duration-300 hover:shadow-lg hover:shadow-blue-300/30 flex items-center justify-center backdrop-blur-sm hover:scale-110"
@@ -99,7 +99,7 @@ const Footer = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-200/20 to-blue-300/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <Twitter className="w-6 h-6 text-slate-600 group-hover:text-blue-600 transition-colors relative z-10" />
                 </a>
-                <a 
+                {/* <a 
                   href="https://github.com/agenticforge" 
                   target="_blank" 
                   rel="noopener noreferrer" 
@@ -107,7 +107,7 @@ const Footer = () => {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-slate-200/20 to-slate-300/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <Github className="w-6 h-6 text-slate-600 group-hover:text-slate-700 transition-colors relative z-10" />
-                </a>
+                </a> */}
                 <a 
                   href="mailto:agenticforge.tech@gmail.com" 
                   className="group relative w-12 h-12 bg-gradient-to-br from-blue-50/60 to-blue-100/50 rounded-full border border-blue-200/50 hover:border-blue-300/70 transition-all duration-300 hover:shadow-lg hover:shadow-blue-200/30 flex items-center justify-center backdrop-blur-sm hover:scale-110"

@@ -10,7 +10,7 @@ const Legal = () => {
       
       {/* Hero Section */}
       <section className="pt-24 pb-16 gradient-hero">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 pt-5">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-6">
               Legal <span className="text-gradient-primary">Information</span>
