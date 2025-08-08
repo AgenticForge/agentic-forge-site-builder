@@ -382,23 +382,23 @@ const About = () => {
             >
               {/* Background decorative elements */}
               <div className="absolute inset-0">
-                <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-blue-100/20 via-indigo-50/10 to-transparent rounded-full blur-3xl" />
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-sky-100/15 via-blue-50/8 to-transparent rounded-full blur-2xl" />
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-indigo-50/6 via-blue-50/4 to-sky-50/6 rounded-full blur-3xl" />
+                <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-blue-100/20 via-indigo-50/10 to-transparent rounded-full blur-2xl" />
+                <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-sky-100/15 via-blue-50/8 to-transparent rounded-full blur-xl" />
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-indigo-50/6 via-blue-50/4 to-sky-50/6 rounded-full blur-2xl" />
               </div>
 
-              <div className="relative z-10 text-center">
+              <div className="relative z-10 text-center max-w-xl mx-auto py-8">
                 <motion.div 
-                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-50/90 via-white/80 to-indigo-50/90 text-blue-700 rounded-full text-sm font-semibold mb-8 border border-blue-200/50 backdrop-blur-xl shadow-lg"
+                  className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-blue-50/90 via-white/80 to-indigo-50/90 text-blue-700 rounded-full text-xs font-semibold mb-4 border border-blue-200/50 backdrop-blur-xl shadow-sm"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <Star className="w-4 h-4 mr-2" />
+                  <Star className="w-3 h-3 mr-1.5" />
                   Our Mission
                 </motion.div>
                 
                 <motion.h3 
-                  className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 bg-clip-text text-transparent"
+                  className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 bg-clip-text text-transparent"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.9 }}
@@ -407,32 +407,32 @@ const About = () => {
                 </motion.h3>
                 
                 <motion.p 
-                  className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-10"
+                  className="text-sm text-muted-foreground max-w-lg mx-auto leading-relaxed mb-6"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 1.1 }}
                 >
-                  Our mission is to make intelligent automation accessible to every business—helping companies of all sizes unlock the power of AI to work smarter, not harder, and achieve extraordinary results.
+                  Our mission is to make intelligent automation accessible to every business—helping companies unlock the power of AI to work smarter, not harder, and achieve extraordinary results.
                 </motion.p>
 
                 {/* Mission pillars */}
                 <motion.div 
-                  className="flex flex-wrap justify-center gap-6 mt-12"
+                  className="flex flex-wrap justify-center gap-3 mt-6"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 1.3 }}
                 >
-                  <div className="flex items-center bg-gradient-to-r from-blue-500/10 to-blue-600/10 backdrop-blur-sm rounded-full px-6 py-3 border border-blue-500/20 shadow-lg">
-                    <TrendingUp className="w-5 h-5 text-blue-600 mr-3" />
-                    <span className="text-foreground font-semibold">Innovation First</span>
+                  <div className="flex items-center bg-gradient-to-r from-blue-500/10 to-blue-600/10 backdrop-blur-sm rounded-full px-4 py-2 border border-blue-500/20 shadow-sm">
+                    <TrendingUp className="w-4 h-4 text-blue-600 mr-2" />
+                    <span className="text-foreground font-semibold text-sm">Innovation First</span>
                   </div>
-                  <div className="flex items-center bg-gradient-to-r from-indigo-500/10 to-indigo-600/10 backdrop-blur-sm rounded-full px-6 py-3 border border-indigo-500/20 shadow-lg">
-                    <Shield className="w-5 h-5 text-indigo-600 mr-3" />
-                    <span className="text-foreground font-semibold">Trust & Security</span>
+                  <div className="flex items-center bg-gradient-to-r from-indigo-500/10 to-indigo-600/10 backdrop-blur-sm rounded-full px-4 py-2 border border-indigo-500/20 shadow-sm">
+                    <Shield className="w-4 h-4 text-indigo-600 mr-2" />
+                    <span className="text-foreground font-semibold text-sm">Trust & Security</span>
                   </div>
-                  <div className="flex items-center bg-gradient-to-r from-sky-500/10 to-sky-600/10 backdrop-blur-sm rounded-full px-6 py-3 border border-sky-500/20 shadow-lg">
-                    <Users className="w-5 h-5 text-sky-600 mr-3" />
-                    <span className="text-foreground font-semibold">Client Success</span>
+                  <div className="flex items-center bg-gradient-to-r from-sky-500/10 to-sky-600/10 backdrop-blur-sm rounded-full px-4 py-2 border border-sky-500/20 shadow-sm">
+                    <Users className="w-4 h-4 text-sky-600 mr-2" />
+                    <span className="text-foreground font-semibold text-sm">Client Success</span>
                   </div>
                 </motion.div>
               </div>
