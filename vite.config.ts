@@ -4,9 +4,9 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? 'https://agenticforge.tech/' : '/',
+  base: '/',
   build: {
-    assetsDir: '',  // Changed to empty to avoid double nesting
+    assetsDir: 'assets',
     outDir: 'dist',
     manifest: true,
     sourcemap: true,
