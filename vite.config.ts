@@ -14,11 +14,19 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks: undefined,
-        assetFileNames: 'assets/[name]-[hash][extname]',
-        chunkFileNames: 'assets/[name]-[hash].js',
-        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: (assetInfo) => {
+          if (!assetInfo.name) return 'assets/[name]-[hash][extname]';
+          if (assetInfo.name.endsWith('.css')) {
+            return `assets/css/[name]-[hash][extname]`;
+          }
+          return `assets/[name]-[hash][extname]`;
+        },
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
       },
     },
+    cssCodeSplit: true,
+    cssMinify: true,
   },
   server: {
     host: "::",
@@ -33,5 +41,17 @@ export default defineConfig(({ mode }) => ({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  css: {
+    modules: {
+      localsConvention: 'camelCase',
+      scopeBehaviour: 'local',
+    },
+    devSourcemap: true,
+    preprocessorOptions: {
+      css: {
+        charset: false
+      }
+    }
   },
 }));
