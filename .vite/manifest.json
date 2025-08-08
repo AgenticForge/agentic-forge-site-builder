@@ -1,0 +1,23 @@
+{
+  "index.html": {
+    "file": "assets/js/index-Cpts6h4L.js",
+    "name": "index",
+    "src": "index.html",
+    "isEntry": true,
+    "css": [
+      "assets/css/index-C9ArmwQb.css"
+    ],
+    "assets": [
+      "assets/hero1-nmJGJoBd.png",
+      "assets/heroLogo-_FuXxrPE.png"
+    ]
+  },
+  "src/assets/hero1.png": {
+    "file": "assets/hero1-nmJGJoBd.png",
+    "src": "src/assets/hero1.png"
+  },
+  "src/assets/heroLogo.png": {
+    "file": "assets/heroLogo-_FuXxrPE.png",
+    "src": "src/assets/heroLogo.png"
+  }
+}

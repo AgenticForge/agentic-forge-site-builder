@@ -1,8 +1,10 @@
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 5
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 10
 
 User-agent: Twitterbot
 Allow: /
@@ -12,3 +14,34 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Sitemap location
+Sitemap: https://agenticforge.tech/sitemap.xml
+
+# Allow access to important pages
+Allow: /about
+Allow: /services
+Allow: /contact
+Allow: /blog
+Allow: /demo
+Allow: /consultation
+
+# Allow access to public resources
+Allow: /assets/
+Allow: /images/
+Allow: /public/
+
+# Prevent access to development files
+Disallow: /src/
+Disallow: /*.js$
+Disallow: /*.ts$
+Disallow: /*.map$
+Disallow: /*.json$
+Disallow: /*.lock$
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /.vscode/
+
+# Default crawl rate
+Crawl-delay: 10
