@@ -4,6 +4,7 @@ import { Workflow, MessageSquare, Mail, Phone, ArrowRight, CheckCircle, Sparkles
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import DemoSection from "./DemoSection";
 
 const services = [
   {
@@ -314,6 +315,9 @@ const Services = () => {
             );
           })}
         </div>
+
+        {/* Demo Section */}
+        <DemoSection />
 
         {/* Ultra-Premium CTA Section */}
         <motion.div 

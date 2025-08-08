@@ -126,12 +126,13 @@ const Footer = () => {
             <h3 className="text-2xl font-bold text-slate-700 mb-8 pl-6 drop-shadow-lg">Services</h3>
             <ul className="space-y-5 pl-6">
               <li>
-                <div 
+                <a 
+                  href="/services"
                   className="group/item flex items-center text-slate-600 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 w-full text-left"
                 >
                   <span className="w-3 h-3 bg-gradient-to-br from-blue-400/40 to-blue-600/40 rounded-full mr-4 group-hover/item:bg-gradient-to-br group-hover/item:from-blue-400 group-hover/item:to-blue-600 group-hover/item:scale-125 group-hover/item:shadow-md group-hover/item:shadow-blue-500/30 transition-all duration-300 border border-blue-400/20" />
                   <span className="font-medium text-lg">AI Agent Development</span>
-                </div>
+                </a>
               </li>
               <li>
                 <a 
@@ -234,21 +235,30 @@ const Footer = () => {
             
             <div className="flex space-x-10">
               <button 
-                onClick={() => navigate('/legal')}
+                onClick={() => {
+                  navigate('/legal');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 className="relative text-slate-600 hover:text-blue-600 transition-all duration-300 font-medium text-lg group"
               >
                 <span className="relative z-10">Privacy Policy</span>
                 <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 group-hover:w-full transition-all duration-300" />
               </button>
               <button 
-                onClick={() => navigate('/legal')}
+                onClick={() => {
+                  navigate('/legal');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 className="relative text-slate-600 hover:text-blue-500 transition-all duration-300 font-medium text-lg group"
               >
                 <span className="relative z-10">Terms of Service</span>
                 <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-300 to-blue-500 group-hover:w-full transition-all duration-300" />
               </button>
               <button 
-                onClick={() => navigate('/legal')}
+                onClick={() => {
+                  navigate('/legal');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 className="relative text-slate-600 hover:text-blue-600 transition-all duration-300 font-medium text-lg group"
               >
                 <span className="relative z-10">Cookie Policy</span>
