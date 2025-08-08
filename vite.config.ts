@@ -11,6 +11,7 @@ export default defineConfig(({ mode }) => ({
     outDir: 'dist',
     manifest: true,
     sourcemap: true,
+    ssrManifest: true,
     rollupOptions: {
       output: {
         manualChunks: undefined,
