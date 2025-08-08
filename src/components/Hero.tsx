@@ -64,7 +64,7 @@ const Hero = () => {
   useScrollAnimation();
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-32 bg-gradient-to-br from-white via-blue-50/30 to-slate-50">
+    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden py-12 bg-gradient-to-br from-white via-blue-50/30 to-slate-50">
       {/* Enhanced Decorative Elements */}
       <div className="absolute inset-0">
         {/* Floating gradient orbs */}

@@ -1,7 +1,29 @@
 import { Cog, Linkedin, Facebook, Instagram, Twitter, Github, Mail } from "lucide-react";
 import heroLogo from "@/assets/heroLogo.png";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path: string) => {
+    if (path === '/about' || path === '/contact') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(path.replace('/', ''));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      navigate(path);
+      setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+  };
   return (
     <footer className="relative bg-gradient-to-br from-white via-slate-50 to-blue-50 border-t border-blue-200/50 overflow-hidden">
       {/* Clean White & Blue Background decorative elements */}
@@ -42,7 +64,7 @@ const Footer = () => {
               <span className="text-sm font-semibold text-slate-500 tracking-wide uppercase">Connect With Us</span>
               <div className="flex space-x-4">
                 <a 
-                  href="https://linkedin.com/company/agenticforge" 
+                  href="https://www.linkedin.com/company/agentic-forge/about/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="group relative w-12 h-12 bg-gradient-to-br from-blue-100/60 to-blue-200/50 rounded-full border border-blue-300/50 hover:border-blue-400/70 transition-all duration-300 hover:shadow-lg hover:shadow-blue-300/30 flex items-center justify-center backdrop-blur-sm hover:scale-110"
@@ -60,7 +82,7 @@ const Footer = () => {
                   <Facebook className="w-6 h-6 text-slate-600 group-hover:text-blue-600 transition-colors relative z-10" />
                 </a>
                 <a 
-                  href="https://instagram.com/agenticforge" 
+                  href="https://www.instagram.com/agenticforge/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="group relative w-12 h-12 bg-gradient-to-br from-blue-50/60 to-blue-100/50 rounded-full border border-blue-200/50 hover:border-blue-300/70 transition-all duration-300 hover:shadow-lg hover:shadow-blue-200/30 flex items-center justify-center backdrop-blur-sm hover:scale-110"
@@ -104,13 +126,12 @@ const Footer = () => {
             <h3 className="text-2xl font-bold text-slate-700 mb-8 pl-6 drop-shadow-lg">Services</h3>
             <ul className="space-y-5 pl-6">
               <li>
-                <a 
-                  href="/services" 
-                  className="group/item flex items-center text-slate-600 hover:text-blue-600 transition-all duration-300 hover:translate-x-2"
+                <div 
+                  className="group/item flex items-center text-slate-600 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 w-full text-left"
                 >
                   <span className="w-3 h-3 bg-gradient-to-br from-blue-400/40 to-blue-600/40 rounded-full mr-4 group-hover/item:bg-gradient-to-br group-hover/item:from-blue-400 group-hover/item:to-blue-600 group-hover/item:scale-125 group-hover/item:shadow-md group-hover/item:shadow-blue-500/30 transition-all duration-300 border border-blue-400/20" />
                   <span className="font-medium text-lg">AI Agent Development</span>
-                </a>
+                </div>
               </li>
               <li>
                 <a 
@@ -149,40 +170,40 @@ const Footer = () => {
             <h3 className="text-2xl font-bold text-slate-700 mb-8 pl-6 drop-shadow-lg">Company</h3>
             <ul className="space-y-5 pl-6">
               <li>
-                <a 
-                  href="/about" 
-                  className="group/item flex items-center text-slate-600 hover:text-blue-600 transition-all duration-300 hover:translate-x-2"
+                <button 
+                  onClick={() => handleNavigation('/about')}
+                  className="group/item flex items-center text-slate-600 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 w-full text-left"
                 >
                   <span className="w-3 h-3 bg-gradient-to-br from-blue-400/40 to-blue-600/40 rounded-full mr-4 group-hover/item:bg-gradient-to-br group-hover/item:from-blue-400 group-hover/item:to-blue-600 group-hover/item:scale-125 group-hover/item:shadow-md group-hover/item:shadow-blue-500/30 transition-all duration-300 border border-blue-400/20" />
                   <span className="font-medium text-lg">About Us</span>
-                </a>
+                </button>
               </li>
               <li>
-                <a 
-                  href="/contact" 
-                  className="group/item flex items-center text-slate-600 hover:text-blue-500 transition-all duration-300 hover:translate-x-2"
+                <button 
+                  onClick={() => handleNavigation('/contact')}
+                  className="group/item flex items-center text-slate-600 hover:text-blue-500 transition-all duration-300 hover:translate-x-2 w-full text-left"
                 >
                   <span className="w-3 h-3 bg-gradient-to-br from-blue-300/40 to-blue-500/40 rounded-full mr-4 group-hover/item:bg-gradient-to-br group-hover/item:from-blue-300 group-hover/item:to-blue-500 group-hover/item:scale-125 group-hover/item:shadow-md group-hover/item:shadow-blue-400/30 transition-all duration-300 border border-blue-300/20" />
                   <span className="font-medium text-lg">Contact</span>
-                </a>
+                </button>
               </li>
               <li>
-                <a 
-                  href="/legal" 
-                  className="group/item flex items-center text-slate-600 hover:text-blue-600 transition-all duration-300 hover:translate-x-2"
+                <button 
+                  onClick={() => handleNavigation('/legal')}
+                  className="group/item flex items-center text-slate-600 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 w-full text-left"
                 >
                   <span className="w-3 h-3 bg-gradient-to-br from-blue-400/40 to-blue-600/40 rounded-full mr-4 group-hover/item:bg-gradient-to-br group-hover/item:from-blue-400 group-hover/item:to-blue-600 group-hover/item:scale-125 group-hover/item:shadow-md group-hover/item:shadow-blue-500/30 transition-all duration-300 border border-blue-400/20" />
                   <span className="font-medium text-lg">Legal</span>
-                </a>
+                </button>
               </li>
               <li>
-                <a 
-                  href="/demo" 
-                  className="group/item flex items-center text-slate-600 hover:text-blue-500 transition-all duration-300 hover:translate-x-2"
+                <button 
+                  onClick={() => handleNavigation('/demo')}
+                  className="group/item flex items-center text-slate-600 hover:text-blue-500 transition-all duration-300 hover:translate-x-2 w-full text-left"
                 >
                   <span className="w-3 h-3 bg-gradient-to-br from-blue-300/40 to-blue-500/40 rounded-full mr-4 group-hover/item:bg-gradient-to-br group-hover/item:from-blue-300 group-hover/item:to-blue-500 group-hover/item:scale-125 group-hover/item:shadow-md group-hover/item:shadow-blue-400/30 transition-all duration-300 border border-blue-300/20" />
                   <span className="font-medium text-lg">Demo</span>
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -212,27 +233,27 @@ const Footer = () => {
             </div>
             
             <div className="flex space-x-10">
-              <a 
-                href="/legal" 
+              <button 
+                onClick={() => navigate('/legal')}
                 className="relative text-slate-600 hover:text-blue-600 transition-all duration-300 font-medium text-lg group"
               >
                 <span className="relative z-10">Privacy Policy</span>
                 <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 group-hover:w-full transition-all duration-300" />
-              </a>
-              <a 
-                href="/legal" 
+              </button>
+              <button 
+                onClick={() => navigate('/legal')}
                 className="relative text-slate-600 hover:text-blue-500 transition-all duration-300 font-medium text-lg group"
               >
                 <span className="relative z-10">Terms of Service</span>
                 <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-300 to-blue-500 group-hover:w-full transition-all duration-300" />
-              </a>
-              <a 
-                href="/legal" 
+              </button>
+              <button 
+                onClick={() => navigate('/legal')}
                 className="relative text-slate-600 hover:text-blue-600 transition-all duration-300 font-medium text-lg group"
               >
                 <span className="relative z-10">Cookie Policy</span>
                 <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 group-hover:w-full transition-all duration-300" />
-              </a>
+              </button>
             </div>
           </div>
         </div>

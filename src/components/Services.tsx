@@ -72,7 +72,7 @@ const Services = () => {
   }, []);
 
   return (
-    <section id="services" className="min-h-screen py-32 relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50/50">
+    <section id="services" className="min-h-[65vh] py-12 relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50/50">
       {/* Ultra-Premium Animated Background */}
       <div className="absolute inset-0 -z-10">
         {/* Dynamic gradient orbs */}

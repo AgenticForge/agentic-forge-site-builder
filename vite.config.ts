@@ -8,9 +8,15 @@ export default defineConfig(({ mode }) => ({
   base: mode === 'production' ? '/agentic-forge-site-builder/' : '/',
   build: {
     assetsDir: 'assets',
+    outDir: 'dist',
+    manifest: true,
+    sourcemap: true,
     rollupOptions: {
       output: {
         manualChunks: undefined,
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
       },
     },
   },
