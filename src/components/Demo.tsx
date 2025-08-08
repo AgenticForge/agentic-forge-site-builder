@@ -1,4 +1,3 @@
-import Header from "./Header";
 import Footer from "./Footer";
 import { Button } from "./ui/button";
 import { ArrowRight, Play, Zap, Clock, Users, Target } from "lucide-react";
@@ -6,11 +5,16 @@ import { ArrowRight, Play, Zap, Clock, Users, Target } from "lucide-react";
 const Demo = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-      
       {/* Hero Section */}
-      <section className="pt-24 pb-16 gradient-hero">
+      <section className="py-16 gradient-hero">
         <div className="container mx-auto px-6">
+          <Button
+            variant="outline"
+            onClick={() => window.history.back()}
+            className="mb-8 text-muted-foreground hover:text-primary transition-colors"
+          >
+            ← Back
+          </Button>
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-6">
               See Our <span className="text-gradient-primary">Demo</span>

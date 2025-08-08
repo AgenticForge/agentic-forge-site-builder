@@ -73,7 +73,7 @@ const Footer = () => {
                   <Linkedin className="w-6 h-6 text-slate-600 group-hover:text-blue-600 transition-colors relative z-10" />
                 </a>
                 <a 
-                  href="https://facebook.com/agenticforge" 
+                  href="https://www.facebook.com/profile.php?id=61578807397652" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="group relative w-12 h-12 bg-gradient-to-br from-blue-100/60 to-blue-200/50 rounded-full border border-blue-300/50 hover:border-blue-400/70 transition-all duration-300 hover:shadow-lg hover:shadow-blue-300/30 flex items-center justify-center backdrop-blur-sm hover:scale-110"
@@ -99,7 +99,7 @@ const Footer = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-200/20 to-blue-300/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <Twitter className="w-6 h-6 text-slate-600 group-hover:text-blue-600 transition-colors relative z-10" />
                 </a>
-                <a 
+                {/* <a 
                   href="https://github.com/agenticforge" 
                   target="_blank" 
                   rel="noopener noreferrer" 
@@ -107,7 +107,7 @@ const Footer = () => {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-slate-200/20 to-slate-300/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <Github className="w-6 h-6 text-slate-600 group-hover:text-slate-700 transition-colors relative z-10" />
-                </a>
+                </a> */}
                 <a 
                   href="mailto:agenticforge.tech@gmail.com" 
                   className="group relative w-12 h-12 bg-gradient-to-br from-blue-50/60 to-blue-100/50 rounded-full border border-blue-200/50 hover:border-blue-300/70 transition-all duration-300 hover:shadow-lg hover:shadow-blue-200/30 flex items-center justify-center backdrop-blur-sm hover:scale-110"
@@ -126,12 +126,13 @@ const Footer = () => {
             <h3 className="text-2xl font-bold text-slate-700 mb-8 pl-6 drop-shadow-lg">Services</h3>
             <ul className="space-y-5 pl-6">
               <li>
-                <div 
+                <a 
+                  href="/services"
                   className="group/item flex items-center text-slate-600 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 w-full text-left"
                 >
                   <span className="w-3 h-3 bg-gradient-to-br from-blue-400/40 to-blue-600/40 rounded-full mr-4 group-hover/item:bg-gradient-to-br group-hover/item:from-blue-400 group-hover/item:to-blue-600 group-hover/item:scale-125 group-hover/item:shadow-md group-hover/item:shadow-blue-500/30 transition-all duration-300 border border-blue-400/20" />
                   <span className="font-medium text-lg">AI Agent Development</span>
-                </div>
+                </a>
               </li>
               <li>
                 <a 
@@ -234,21 +235,30 @@ const Footer = () => {
             
             <div className="flex space-x-10">
               <button 
-                onClick={() => navigate('/legal')}
+                onClick={() => {
+                  navigate('/legal');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 className="relative text-slate-600 hover:text-blue-600 transition-all duration-300 font-medium text-lg group"
               >
                 <span className="relative z-10">Privacy Policy</span>
                 <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 group-hover:w-full transition-all duration-300" />
               </button>
               <button 
-                onClick={() => navigate('/legal')}
+                onClick={() => {
+                  navigate('/legal');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 className="relative text-slate-600 hover:text-blue-500 transition-all duration-300 font-medium text-lg group"
               >
                 <span className="relative z-10">Terms of Service</span>
                 <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-300 to-blue-500 group-hover:w-full transition-all duration-300" />
               </button>
               <button 
-                onClick={() => navigate('/legal')}
+                onClick={() => {
+                  navigate('/legal');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 className="relative text-slate-600 hover:text-blue-600 transition-all duration-300 font-medium text-lg group"
               >
                 <span className="relative z-10">Cookie Policy</span>

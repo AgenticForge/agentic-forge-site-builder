@@ -140,6 +140,14 @@ const Header = () => {
               variant="outline" 
               size="sm" 
               className="bg-white/5 border-white/20 hover:bg-white/10 hover:border-white/30 text-foreground/80 hover:text-primary backdrop-blur-sm transition-all duration-300"
+              onClick={() => window.location.href = '/demo'}
+            >
+              Try Demo
+            </Button>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="bg-white/5 border-white/20 hover:bg-white/10 hover:border-white/30 text-foreground/80 hover:text-primary backdrop-blur-sm transition-all duration-300"
               onClick={() => window.location.href = '/consultation'}
             >
               Free Audit

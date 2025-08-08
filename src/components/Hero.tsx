@@ -83,7 +83,7 @@ const Hero = () => {
       </div>
 
       {/* Main Grid */}
-      <div className="relative z-10 container mx-auto px-6 max-w-7xl">
+      <div className="relative z-10 container mx-auto px-6 pt-5 max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[70vh]">
           {/* Left: Text */}
           <motion.div
