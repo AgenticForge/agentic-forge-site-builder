@@ -4,26 +4,27 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: '/',  // Changed to root path since you're using a custom domain
+  base: mode === 'production' ? 'https://agenticforge.tech/' : '/',
   build: {
-    assetsDir: 'assets',
+    assetsDir: '',  // Changed to empty to avoid double nesting
     outDir: 'dist',
     manifest: true,
     sourcemap: true,
     rollupOptions: {
       output: {
         manualChunks: undefined,
-        assetFileNames: ({ name }) => {
-          if (/\.(gif|jpe?g|png|svg)$/.test(name ?? '')) {
-            return 'assets/images/[name]-[hash][extname]';
+        assetFileNames: (assetInfo) => {
+          const fileName = assetInfo.name || '';
+          if (/\.(gif|jpe?g|png|svg)$/i.test(fileName)) {
+            return `assets/img/[name].[hash][extname]`;
           }
-          if (/\.css$/.test(name ?? '')) {
-            return 'assets/css/[name]-[hash][extname]';
+          if (fileName.endsWith('.css')) {
+            return `assets/css/[name].[hash][extname]`;
           }
-          return 'assets/[name]-[hash][extname]';
+          return `assets/[name].[hash][extname]`;
         },
-        chunkFileNames: 'assets/js/[name]-[hash].js',
-        entryFileNames: 'assets/js/[name]-[hash].js',
+        chunkFileNames: 'assets/js/[name].[hash].js',
+        entryFileNames: 'assets/js/[name].[hash].js',
       },
     },
   },
