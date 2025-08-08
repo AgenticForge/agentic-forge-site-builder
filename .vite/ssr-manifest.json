@@ -743,6 +743,10 @@
     "/agentic-forge-site-builder/assets/hero1-nmJGJoBd.png",
     "/agentic-forge-site-builder/assets/heroLogo-_FuXxrPE.png"
   ],
+  "node_modules/lucide-react/dist/esm/icons/arrow-left.js": [
+    "/agentic-forge-site-builder/assets/hero1-nmJGJoBd.png",
+    "/agentic-forge-site-builder/assets/heroLogo-_FuXxrPE.png"
+  ],
   "node_modules/lucide-react/dist/esm/icons/arrow-right.js": [
     "/agentic-forge-site-builder/assets/hero1-nmJGJoBd.png",
     "/agentic-forge-site-builder/assets/heroLogo-_FuXxrPE.png"
@@ -784,10 +788,6 @@
     "/agentic-forge-site-builder/assets/heroLogo-_FuXxrPE.png"
   ],
   "node_modules/lucide-react/dist/esm/icons/file-text.js": [
-    "/agentic-forge-site-builder/assets/hero1-nmJGJoBd.png",
-    "/agentic-forge-site-builder/assets/heroLogo-_FuXxrPE.png"
-  ],
-  "node_modules/lucide-react/dist/esm/icons/github.js": [
     "/agentic-forge-site-builder/assets/hero1-nmJGJoBd.png",
     "/agentic-forge-site-builder/assets/heroLogo-_FuXxrPE.png"
   ],
@@ -1488,6 +1488,10 @@
     "/agentic-forge-site-builder/assets/heroLogo-_FuXxrPE.png"
   ],
   "src/components/Demo.tsx": [
+    "/agentic-forge-site-builder/assets/hero1-nmJGJoBd.png",
+    "/agentic-forge-site-builder/assets/heroLogo-_FuXxrPE.png"
+  ],
+  "src/components/DemoSection.tsx": [
     "/agentic-forge-site-builder/assets/hero1-nmJGJoBd.png",
     "/agentic-forge-site-builder/assets/heroLogo-_FuXxrPE.png"
   ],
