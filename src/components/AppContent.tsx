@@ -2,12 +2,12 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Routes, Route, useLocation } from "react-router-dom";
-import Index from "./Index";
-import NotFound from "./NotFound";
-import Legal from "./Legal";
-import Consultation from "./Consultation";
-import Demo from "./Demo";
-import SEO from "./SEO";
+import Index from "@/pages/Index";           // Changed from "./Index"
+import NotFound from "@/pages/NotFound";     // Changed from "./NotFound"
+import Legal from "@/pages/Legal";           // Changed from "./Legal"
+import Consultation from "@/pages/Consultation"; // Changed from "./Consultation"
+import Demo from "@/pages/Demo";             // Changed from "./Demo"
+import SEO from "@/components/SEO";          // Assuming SEO is in components
 
 const AppContent = () => {
   const location = useLocation();
