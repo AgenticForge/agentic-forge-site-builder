@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 export default defineConfig(({ mode }) => ({
   base: '/',
   build: {
-    assetsDir: '',  // Changed to empty to avoid double nesting
+    assetsDir: 'assets',  // ← Changed from '' to 'assets'
     outDir: 'dist',
     manifest: true,
     sourcemap: true,
