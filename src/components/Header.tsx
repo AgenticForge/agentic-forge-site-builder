@@ -73,7 +73,7 @@ const Header = () => {
     { href: '#contact', label: 'Contact', id: 'contact' }
   ];
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleNavigation = (path: string) => {
     if (path === '/about' || path === '/contact') {
