@@ -73,6 +73,28 @@ const Header = () => {
     { href: '#contact', label: 'Contact', id: 'contact' }
   ];
 
+  const navigate = useNavigate();
+
+  const handleNavigation = (path: string) => {
+    if (path === '/about' || path === '/contact') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(path.replace('/', ''));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      navigate(path);
+      setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/10 dark:bg-black/10 backdrop-blur-2xl border-b border-white/20 dark:border-white/10 shadow-lg">
       <div className="container mx-auto px-6 py-4">
@@ -140,7 +162,8 @@ const Header = () => {
               variant="outline" 
               size="sm" 
               className="bg-white/5 border-white/20 hover:bg-white/10 hover:border-white/30 text-foreground/80 hover:text-primary backdrop-blur-sm transition-all duration-300"
-              onClick={() => window.location.href = '/demo'}
+              // onClick={() => window.location.href = '/demo'}
+              onClick={() => handleNavigation('/legal')}
             >
               Try Demo
             </Button>
