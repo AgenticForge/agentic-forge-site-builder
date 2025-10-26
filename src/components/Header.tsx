@@ -212,7 +212,7 @@ const Header = () => {
           <Button 
             variant="ghost" 
             size="icon" 
-            className="lg:hidden hover:bg-white/10 transition-colors duration-300"
+            className="lg:hidden hover:bg-blue-50 text-foreground hover:text-blue-600 transition-colors duration-300"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

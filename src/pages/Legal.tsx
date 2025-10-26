@@ -35,16 +35,13 @@ const Legal = () => {
               <p className="text-muted-foreground mb-6">
                 Learn how we collect, use, and protect your personal information when you use our services.
               </p>
-              <div className="space-y-3 text-sm text-muted-foreground mb-6">
+              <div className="space-y-3 text-sm text-muted-foreground">
                 <p>• Data collection practices</p>
                 <p>• Information usage and sharing</p>
                 <p>• Your rights and choices</p>
                 <p>• Security measures</p>
                 <p>• Contact information</p>
               </div>
-              <Button variant="outline" className="w-full">
-                Read Privacy Policy <ArrowRight className="ml-2" />
-              </Button>
             </div>
 
             {/* Terms of Service */}
@@ -56,16 +53,13 @@ const Legal = () => {
               <p className="text-muted-foreground mb-6">
                 The terms and conditions that govern your use of our AI automation services and platform.
               </p>
-              <div className="space-y-3 text-sm text-muted-foreground mb-6">
+              <div className="space-y-3 text-sm text-muted-foreground">
                 <p>• Service terms and conditions</p>
                 <p>• User responsibilities</p>
                 <p>• Payment and billing terms</p>
                 <p>• Intellectual property rights</p>
                 <p>• Limitation of liability</p>
               </div>
-              <Button variant="outline" className="w-full">
-                Read Terms of Service <ArrowRight className="ml-2" />
-              </Button>
             </div>
 
             {/* Cookie Policy */}
@@ -77,16 +71,13 @@ const Legal = () => {
               <p className="text-muted-foreground mb-6">
                 Information about how we use cookies and similar technologies on our website.
               </p>
-              <div className="space-y-3 text-sm text-muted-foreground mb-6">
+              <div className="space-y-3 text-sm text-muted-foreground">
                 <p>• Types of cookies we use</p>
                 <p>• Purpose of data collection</p>
                 <p>• Third-party cookies</p>
                 <p>• Cookie management</p>
                 <p>• Opt-out options</p>
               </div>
-              <Button variant="outline" className="w-full">
-                Read Cookie Policy <ArrowRight className="ml-2" />
-              </Button>
             </div>
           </div>
         </div>

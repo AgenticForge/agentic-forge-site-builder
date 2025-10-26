@@ -229,56 +229,6 @@ const Demo = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">What Our Clients Say</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Hear from businesses that have transformed their operations with our AI automation solutions.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-card border border-border rounded-xl p-6">
-              <p className="text-muted-foreground mb-4">
-                "The demo showed us exactly how AI automation could solve our customer service challenges. Implementation was smooth and ROI was immediate."
-              </p>
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-primary/10 rounded-full mr-3"></div>
-                <div>
-                  <p className="font-semibold text-sm">Sarah Johnson</p>
-                  <p className="text-xs text-muted-foreground">CTO, TechFlow Inc</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-card border border-border rounded-xl p-6">
-              <p className="text-muted-foreground mb-4">
-                "After seeing the demo, we knew this was the solution we needed. Our sales process is now 3x more efficient."
-              </p>
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-secondary/10 rounded-full mr-3"></div>
-                <div>
-                  <p className="font-semibold text-sm">Mike Chen</p>
-                  <p className="text-xs text-muted-foreground">VP Sales, GrowthCo</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-card border border-border rounded-xl p-6">
-              <p className="text-muted-foreground mb-4">
-                "The live demo was incredibly helpful. We could see exactly how the automation would work for our specific use case."
-              </p>
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-accent/10 rounded-full mr-3"></div>
-                <div>
-                  <p className="font-semibold text-sm">Lisa Rodriguez</p>
-                  <p className="text-xs text-muted-foreground">Operations Director, InnovateCorp</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-16 bg-muted/50">
         <div className="container mx-auto px-6 text-center">

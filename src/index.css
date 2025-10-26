@@ -112,6 +112,7 @@
 
   body {
     @apply bg-background text-foreground font-inter;
+    overflow-x: hidden;
   }
 }
 
@@ -283,7 +284,18 @@
   }
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling and prevent horizontal scroll */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
 }

@@ -223,31 +223,13 @@ const About = () => {
                 </motion.p>
                 
                 <motion.p 
-                  className="text-base text-muted-foreground mb-10 leading-relaxed"
+                  className="text-base text-muted-foreground leading-relaxed"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.9 }}
                 >
                   Whether you're a growing startup or a large enterprise, we create intelligent systems that adapt to your workflows and drive real-world results.
                 </motion.p>
-                
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1.1 }}
-                >
-                  <Button 
-                    variant="hero" 
-                    size="lg"
-                    className="group relative bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 hover:from-blue-700 hover:via-indigo-700 hover:to-sky-700 text-white px-8 py-4 font-bold shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105"
-                  >
-                    <span className="relative z-10 flex items-center">
-                      Learn About Our Process
-                      <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 rounded-lg" />
-                  </Button>
-                </motion.div>
               </motion.div>
             </motion.div>
 

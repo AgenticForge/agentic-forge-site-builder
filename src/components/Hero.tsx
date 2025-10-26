@@ -138,7 +138,7 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg" 
-              className="group relative px-10 py-5 text-lg font-semibold border-2 border-blue-300 text-blue-700 hover:border-blue-400 hover:bg-blue-50 backdrop-blur-sm shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300" 
+              className="group relative px-10 py-5 text-lg font-semibold border-2 border-blue-300 text-blue-700 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-800 backdrop-blur-sm shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300" 
               onClick={() => window.location.href = '/demo'}
             >
               <Play className="mr-2 group-hover:scale-110 transition-transform duration-300" /> 
