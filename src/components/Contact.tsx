@@ -543,7 +543,8 @@ const Contact = () => {
                     </div>
                     <div className="text-sm text-gray-600 space-y-1">
                       <div>contact@agenticforge.tech</div>
-                      <div>+91 70221 85683</div>
+                      <div>+91 7975962858</div>
+                      <div>+91 7019698155</div>
                     </div>
                   </div>
 
